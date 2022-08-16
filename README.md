@@ -2,7 +2,7 @@
 
 ## Equipe
 
-Guilherme Silva Toledo - Matricula 1
+Guilherme Silva Toledo - 121110792
 
 Erick Farias de Almeida Pereira - 121110373
 

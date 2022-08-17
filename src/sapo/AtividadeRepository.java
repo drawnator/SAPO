@@ -1,8 +1,19 @@
 package sapo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AtividadeRepository {
+	private Map<String,Atividade> listaAtividades;
+	public AtividadeRepository() {
+		this.listaAtividades = new HashMap<String,Atividade>();
+	}
 	public String cadastrarAtividade(String nome,String descricao,String cpf) {
-		return null;
+		int numeroAtividade = listaAtividades.size();
+		String id = geraSigla(nome)+"-"+numeroAtividade;
+		Atividade novaAtividade = new Atividade(nome,descricao,cpf,id);
+		this.listaAtividades.put(id, novaAtividade);
+		return id;
 	}
 	public void encerrarAtividade(String atividadeId) {return;}
 	public void desativarAtividade(String atividadeId) {return;}

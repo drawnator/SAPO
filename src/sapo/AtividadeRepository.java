@@ -24,6 +24,8 @@ public class AtividadeRepository {
 	public void alterarDescricaoAtividade(String atividadeId,String descricao) {return;}
 	public void alterarResponsavelAtividade(String atividadeId,String cpf) {return;}
 	
+	@Override
+	public String toString() {return null;}
 	private String geraSigla(String nome) {
 		String sigla = "";
 		String vogais = "aeiouAEIOU ";

@@ -15,12 +15,25 @@ public class Atividade {
 		this.nome = nome;
 		this.decricao = decricao;
 		this.cpfResponsavel = cpfResponsavel;
-		
+		this.codigo = this.geraSigla(nome);
 	}
 	
-//	public void erro() throws IllegalArgumentException{
-//		throw new IllegalArgumentException("erro");
-//	}
+	private String geraSigla(String nome) {
+		String sigla = "";
+		String vogais = "aeiouAEIOU ";
+		for(int i =0;i<nome.length();i++) {
+			String letra = "" + nome.charAt(i);
+			if (codigo.length() < 3 || !vogais.contains(letra)) {
+				sigla += letra;
+			}
+			}
+		while (codigo.length() < 3){
+			sigla += "X";
+		}
+		return sigla;
+	}
+	
+	
 	
 	@Override
 	public String toString() {

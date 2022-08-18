@@ -36,7 +36,7 @@ public class Atividade {
 		}
 	}
 
-	public void desativar() {
+	public void desativar() throws IllegalStateException {
 		if (this.status == "aberta") {
 			if (this.tarefasPendentes == 0) {
 				this.status = "desativada";
@@ -48,7 +48,7 @@ public class Atividade {
 		}
 	}
 
-	public void reabrir() {
+	public void reabrir() throws IllegalStateException {
 		if (this.status == "aberta") {
 			throw new IllegalStateException("atividade ja aberta");
 		} else {

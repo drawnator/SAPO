@@ -11,7 +11,7 @@ public class Atividade {
 	private int tarefasRealizadas;
 	private int tarefasPendentes;
 	private int tafetasCadastradas;
-	private Map<String, Tarefas> listaTarefas;
+	private Map<String, Tarefa> listaTarefas;
 
 	public Atividade(String nome, String decricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;

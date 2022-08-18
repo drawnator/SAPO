@@ -15,14 +15,24 @@ public class AtividadeRepository {
 		this.listaAtividades.put(id, novaAtividade);
 		return id;
 	}
-	public void encerrarAtividade(String atividadeId) {return;}
-	public void desativarAtividade(String atividadeId) {return;}
-	public void reabrirAtividade(String atividadeId) {return;}
-	public String exibirAtividade(String atividadeId) {
-		return null;
+	public void encerrarAtividade(String atividadeId) {
+		listaAtividades.get(atividadeId).encerrar();
 	}
-	public void alterarDescricaoAtividade(String atividadeId,String descricao) {return;}
-	public void alterarResponsavelAtividade(String atividadeId,String cpf) {return;}
+	public void desativarAtividade(String atividadeId) {
+		listaAtividades.get(atividadeId).desativar();
+	}
+	public void reabrirAtividade(String atividadeId) {
+		listaAtividades.get(atividadeId).reabrir();
+	}
+	public String exibirAtividade(String atividadeId) {
+		return listaAtividades.get(atividadeId).toString();
+	}
+	public void alterarDescricaoAtividade(String atividadeId,String descricao) {
+		listaAtividades.get(atividadeId).alterarDescricao(descricao);
+	}
+	public void alterarResponsavelAtividade(String atividadeId,String cpf) {
+		listaAtividades.get(atividadeId).alterarResponsavel(cpf);
+	}
 	
 	@Override
 	public String toString() {return null;}

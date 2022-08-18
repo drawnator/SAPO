@@ -5,7 +5,7 @@ import java.util.Map;
 public class Atividade {
 	private String nome;
 	private String codigo;
-	private String decricao;
+	private String descricao;
 	private String cpfResponsavel;
 	private String status;
 	private int tarefasRealizadas;
@@ -15,7 +15,7 @@ public class Atividade {
 
 	public Atividade(String nome, String decricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;
-		this.decricao = decricao;
+		this.descricao = descricao;
 		this.cpfResponsavel = cpfResponsavel;
 		this.codigo = sigla;
 		this.status = "aberta";
@@ -57,6 +57,14 @@ public class Atividade {
 		}
 	}
 
+	public void alterarDescricao(String Descricao) {
+		this.descricao = descricao;
+	}
+	
+	public void alterarResponsavel(String cpf) {
+		this.cpfResponsavel = cpfResponsavel;
+	}
+	
 	@Override
 	public String toString() {
 		return null;

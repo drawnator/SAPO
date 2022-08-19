@@ -13,7 +13,7 @@ public class Atividade {
 	private int tafetasCadastradas;
 	private Map<String, Tarefa> listaTarefas;
 
-	public Atividade(String nome, String decricao, String cpfResponsavel, String sigla) {
+	public Atividade(String nome, String descricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.cpfResponsavel = cpfResponsavel;
@@ -57,12 +57,12 @@ public class Atividade {
 		}
 	}
 
-	public void alterarDescricao(String Descricao) {
+	public void alterarDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
 	public void alterarResponsavel(String cpf) {
-		this.cpfResponsavel = cpfResponsavel;
+		this.cpfResponsavel = cpf;
 	}
 	
 	@Override

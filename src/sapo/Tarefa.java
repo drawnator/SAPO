@@ -6,16 +6,16 @@ import java.util.Set;
 public class Tarefa {
     
     String id;  
-    String atividade;
+    String nomeAtividade;
     int duracao;
     String nome;
     String[] habilidades;
-    Set<String> pessoas;
+    HashMap<String, Pessoa> pessoas;
     boolean concluida;
     
     public Tarefa(String id, String nome, String[] habilidades, int tarefasCadastradas) {
         this.id = id + '-' + tarefasCadastradas;
-        this.atividade = id;
+        this.nomeAtividade = id;
         this.nome = nome;
         this.habilidades = habilidades;
         this.duracao = 0;
@@ -52,9 +52,9 @@ public class Tarefa {
         this.concluida = true;
     }
 
-    public void associarPessoa(String cpf) {
+    public void associarPessoa(Pessoa pessoa) {
         if (!this.concluida) {
-            this.pessoas.add(cpf);
+            this.pessoas.put(pessoa.getCpf(), pessoa);
         }
     }
 
@@ -65,12 +65,21 @@ public class Tarefa {
     }
 
     public String toString() {
-        return null;
-        /*this.nome + " - " + this.id + "\n"
-                + "- " + this.atividade + "\n"
-                + "Horas: " + this.duracao + "\n"
-                + "Pessoas: " + this.pessoas + "\n"
-                + "Concluida: " + this.concluida;*/
+        String output = "";
+        output += this.nome + " - " + this.id + "\n";
+        output +=  "- " + this.nomeAtividade + "\n";
+        for (String habilidade : this.habilidades) {
+            output += habilidade;
+            if (habilidade != this.habilidades[this.habilidades.length - 1]) {
+                output += ", ";
+            }
+        output += "\n(" + this.duracao + " hora(s) executadas))\n";
+        output += "===\n";
+        output += "Equipe:\n";
+        for (Pessoa pessoa : this.pessoas.keySet()) {
+            output += pessoa + " - " + this.pessoas.get(pessoa.getCpf());
+        }
+        return output;
     }
 
 

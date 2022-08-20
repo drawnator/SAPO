@@ -1,39 +1,43 @@
 package sapo;
 
 public class TarefaController {
-    TarefaRepository tr;
+    TarefaService ts;
+    PessoaService ps;
+    AtividadeService as;
     
-    public TarefaController(TarefaRepository tr) {
-        this.tr = tr;
+    public TarefaController(TarefaService ts, PessoaService ps, AtividadeService as) {
+        this.ts = ts;
+        this.ps = ps;
+        this.as = as;
     }
     String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
-        return this.tr.cadastrarTarefa(atividadeId, nome, habilidades);
+        return this.ts.cadastrarTarefa(atividadeId, nome, habilidades);
     } 
     void alterarNomeTarefa(String idTarefa, String novoNome){
-        this.tr.alterarNomeTarefa(idTarefa, novoNome);
+        this.ts.alterarNomeTarefa(idTarefa, novoNome);
     }
     void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
-        this.tr.alterarHabilidadesTarefa(idTarefa, habilidades);
+        this.ts.alterarHabilidadesTarefa(idTarefa, habilidades);
     }
     void adicionarHorasTarefa(String idTarefa, int horas){
-        this.tr.adicionarHorasTarefa(idTarefa, horas);
+        this.ts.adicionarHorasTarefa(idTarefa, horas);
     }
     void removerHorasTarefa(String idTarefa, int horas){
-        this.tr.removerHorasTarefa(idTarefa, horas);
+        this.ts.removerHorasTarefa(idTarefa, horas);
     }
     void concluirTarefa(String idTarefa){
-        this.tr.concluirTarefa(idTarefa);
+        this.ts.concluirTarefa(idTarefa);
     }
     void removerTarefa(String idTarefa){
-        this.tr.removerTarefa(idTarefa);
+        this.ts.removerTarefa(idTarefa);
     }
     String exibirTarefa(String idTarefa){
-        return this.tr.exibirTarefa(idTarefa);
+        return this.ts.exibirTarefa(idTarefa, this.ps, this.as);
     }
     void associarPessoaTarefa(String cpf, String idTarefa){
-        this.tr.associarPessoaTarefa(cpf, idTarefa);
+        this.ts.associarPessoaTarefa(cpf, idTarefa);
     }
     void removerPessoaTarefa(String cpf, String idTarefa){
-        this.tr.removerPessoaTarefa(cpf, idTarefa);
+        this.ts.removerPessoaTarefa(cpf, idTarefa);
     }
 }

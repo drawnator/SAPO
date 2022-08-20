@@ -23,6 +23,11 @@ public class Atividade {
 		this.tarefasPendentes = 0;
 		this.tarefasRealizadas = 0;
 	}
+	public String getNome() {return this.nome;}
+	public String getDescricao() {return this.descricao;}
+	public String getCodigo() {return this.codigo;}
+	public String getcpfResponsavel() {return this.cpfResponsavel;}
+	public String gettarefascadastradas() {return ""+this.tafetasCadastradas;}
 
 	public void encerrar() throws IllegalStateException {
 		if (this.status == "aberta") {
@@ -69,12 +74,8 @@ public class Atividade {
 		this.cpfResponsavel = null;
 	}
 
-	@Override
-	public String toString() {
-		String texto = this.codigo + ": " + this.nome + "\n";
-		if (this.cpfResponsavel != null) {
-			texto += "Responsavel: "+ " - " + this.cpfResponsavel;
-		}
-		return texto;
+	public String addTarefa(Tarefa tarefa) {
+		listaTarefas.put(tarefa.getId(), tarefa);
+		return tarefa.getId();
 	}
 }

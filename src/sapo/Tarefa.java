@@ -1,20 +1,20 @@
 package sapo;
 
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Tarefa {
     String id;  
-    String nomeAtividade;
+    String idAtividade;
     int duracao;
     String nome;
     String[] habilidades;
-    HashMap<String, Pessoa> pessoas;
+    HashSet<String> pessoas;
     boolean concluida;
     
     public Tarefa(String id, String nome, String[] habilidades, int tarefasCadastradas) {
+        this.idAtividade = id;
         this.id = id + '-' + tarefasCadastradas;
-        this.nomeAtividade = id;
         this.nome = nome;
         this.habilidades = habilidades;
         this.duracao = 0;
@@ -31,6 +31,10 @@ public class Tarefa {
     
     public String[] getHabilidades() {
         return this.habilidades;
+    }
+
+    public int getDuracao() {
+        return this.duracao;
     }
 
     public void setNome(String nome) {
@@ -51,9 +55,9 @@ public class Tarefa {
         this.concluida = true;
     }
 
-    public void associarPessoa(Pessoa pessoa) {
+    public void associarPessoa(String cpf) {
         if (!this.concluida) {
-            this.pessoas.put(pessoa.getCpf(), pessoa);
+            this.pessoas.add(cpf);
         }
     }
 
@@ -63,26 +67,11 @@ public class Tarefa {
         }
     }
 
-    public String toString() {
-        String output = "";
-        output += this.nome + " - " + this.id + "\n";
-        output +=  "- " + this.nomeAtividade + "\n";
-        for (String habilidade : this.habilidades) {
-            output += habilidade;
-            if (habilidade != this.habilidades[this.habilidades.length - 1]) {
-                output += ", ";
-            }
-        output += "\n(" + this.duracao + " hora(s) executadas))\n";
-        output += "===\n";
-        output += "Equipe:\n";
-        for (Pessoa pessoa : this.pessoas.keySet()) {
-            output += pessoa + " - " + this.pessoas.get(pessoa.getCpf());
-        }
-        return output;
+    public Set<String> getPessoas() {
+        return this.pessoas;
     }
 
-
-
-    
-
+    public String getIdAtividade() {
+        return this.idAtividade;
+    }
 }

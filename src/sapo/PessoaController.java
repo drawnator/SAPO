@@ -2,45 +2,45 @@ package sapo;
 
 public class PessoaController {
 	
-	PessoaRepository pr;
+	PessoaService ps;
 	
-	public PessoaController(PessoaRepository pr) {
-		this.pr = pr;
+	public PessoaController(PessoaService ps) {
+		this.ps = ps;
 	}
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {
-		pr.cadastrarPessoa(cpf, nome, habilidades);
+		ps.cadastrarPessoa(cpf, nome, habilidades);
 	}
 	
 	public String exibirPessoa(String cpf) {
-		return pr.exibirPessoa(cpf);
+		return ps.exibirPessoa(cpf);
 	}
 	
 	public void alterarNomePessoa(String cpf, String novoNome) {
-		pr.alterarNomePessoa(cpf, novoNome);
+		ps.alterarNomePessoa(cpf, novoNome);
 	}
 	
 	public void alterarHabilidadesPessoa(String cpf, String[] novasHabilidades) {
-		pr.alterarHabilidadesPessoa(cpf, novasHabilidades);
+		ps.alterarHabilidadesPessoa(cpf, novasHabilidades);
 	}
 	
 	public void removerPessoa(String cpf) {
-		pr.removerPessoa(cpf);
+		ps.removerPessoa(cpf);
 	}
 	
 	public void adicionarComentarioPessoa(String cpf, String comentario, String autorCpf) {
-		pr.adicionarComentarioPessoa(cpf, comentario, autorCpf);
+		ps.adicionarComentarioPessoa(cpf, comentario, autorCpf);
 	}
 	
 	public String listarComentariosPessoa(String cpf) {
-		return pr.listarComentariosPessoa(cpf);
+		return ps.listarComentariosPessoa(cpf);
 	}
 	
 	public String getNome(String cpf ) {
-		return pr.getNome(cpf);
+		return ps.getNome(cpf);
 	}
 	
 	public Pessoa getPessoa(String cpf) {
-		return pr.getPessoa(cpf);
+		return ps.getPessoa(cpf);
 	}
 }

@@ -14,7 +14,6 @@ public class Tarefa {
     
     public Tarefa(String id, String nome, String[] habilidades, int tarefasCadastradas) {
         this.id = id + '-' + tarefasCadastradas;
-        this.nomeAtividade = id;
         this.nome = nome;
         this.habilidades = habilidades;
         this.duracao = 0;

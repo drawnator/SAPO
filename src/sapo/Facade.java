@@ -5,19 +5,15 @@ public class Facade {
     private PessoaController pessoaController;
     private AtividadeController atividadeController;
     private TarefaController tarefaController;
-    private PessoaRepository pessoaRepository;
-    private AtividadeRepository atividadeRepository;
-    private TarefaRepository tarefaRepository;
-    private AtividadeService atividadeService;
-    private PessoaService pessoaService;
 
     public Facade() {
-        this.pessoaRepository = new PessoaRepository();
-        this.atividadeRepository = new AtividadeRepository();
-        this.tarefaRepository = new TarefaRepository();
-        this.pessoaController = new PessoaController(this.pessoaRepository);
-        this.atividadeController = new AtividadeController(this.atividadeRepository);
+        var atividadeService = new AtividadeService();
+        var pessoaService = new PessoaService();
+
+        this.pessoaController = new PessoaController(this.pessoaService);
+        this.atividadeController = new AtividadeController(atividadeService);
         this.tarefaController = new TarefaController(this.tarefaRepository);
+        
     }
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {
@@ -84,34 +80,34 @@ public class Facade {
 		this.atividadeController.alterarResponsavelAtividade(atividadeId, cpf);
 	}
 
-    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
+    public String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         return this.tarefaController.cadastrarTarefa(atividadeId, nome, habilidades);
     } 
-    void alterarNomeTarefa(String idTarefa, String novoNome){
+    public void alterarNomeTarefa(String idTarefa, String novoNome){
         this.tarefaController.alterarNomeTarefa(idTarefa, novoNome);
     }
-    void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
+    public void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
         this.tarefaController.alterarHabilidadesTarefa(idTarefa, habilidades);
     }
-    void adicionarHorasTarefa(String idTarefa, int horas){
+    public void adicionarHorasTarefa(String idTarefa, int horas){
         this.tarefaController.adicionarHorasTarefa(idTarefa, horas);
     }
-    void removerHorasTarefa(String idTarefa, int horas){
+    public void removerHorasTarefa(String idTarefa, int horas){
         this.tarefaController.removerHorasTarefa(idTarefa, horas);
     }
-    void concluirTarefa(String idTarefa){
+    public void concluirTarefa(String idTarefa){
         this.tarefaController.concluirTarefa(idTarefa);
     }
-    void removerTarefa(String idTarefa){
+    public void removerTarefa(String idTarefa){
         this.tarefaController.removerTarefa(idTarefa);
     }
-    String exibirTarefa(String idTarefa){
+    public String exibirTarefa(String idTarefa){
         return this.tarefaController.exibirTarefa(idTarefa);
     }
-    void associarPessoaTarefa(String cpf, String idTarefa){
+    public void associarPessoaTarefa(String cpf, String idTarefa){
         this.tarefaController.associarPessoaTarefa(cpf, idTarefa);
     }
-    void removerPessoaTarefa(String cpf, String idTarefa){
+    public void removerPessoaTarefa(String cpf, String idTarefa){
         this.tarefaController.removerPessoaTarefa(cpf, idTarefa);
     }
 

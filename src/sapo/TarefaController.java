@@ -10,34 +10,34 @@ public class TarefaController {
         this.ps = ps;
         this.as = as;
     }
-    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
+    public String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         return this.ts.cadastrarTarefa(atividadeId, nome, habilidades);
     } 
-    void alterarNomeTarefa(String idTarefa, String novoNome){
+    public void alterarNomeTarefa(String idTarefa, String novoNome){
         this.ts.alterarNomeTarefa(idTarefa, novoNome);
     }
-    void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
+    public void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
         this.ts.alterarHabilidadesTarefa(idTarefa, habilidades);
     }
-    void adicionarHorasTarefa(String idTarefa, int horas){
+    public void adicionarHorasTarefa(String idTarefa, int horas){
         this.ts.adicionarHorasTarefa(idTarefa, horas);
     }
-    void removerHorasTarefa(String idTarefa, int horas){
+    public void removerHorasTarefa(String idTarefa, int horas){
         this.ts.removerHorasTarefa(idTarefa, horas);
     }
-    void concluirTarefa(String idTarefa){
+    public void concluirTarefa(String idTarefa){
         this.ts.concluirTarefa(idTarefa);
     }
-    void removerTarefa(String idTarefa){
+    public void removerTarefa(String idTarefa){
         this.ts.removerTarefa(idTarefa);
     }
-    String exibirTarefa(String idTarefa){
+    public String exibirTarefa(String idTarefa){
         return this.ts.exibirTarefa(idTarefa, this.ps, this.as);
     }
-    void associarPessoaTarefa(String cpf, String idTarefa){
+    public void associarPessoaTarefa(String cpf, String idTarefa){
         this.ts.associarPessoaTarefa(cpf, idTarefa);
     }
-    void removerPessoaTarefa(String cpf, String idTarefa){
+    public void removerPessoaTarefa(String cpf, String idTarefa){
         this.ts.removerPessoaTarefa(cpf, idTarefa);
     }
 }

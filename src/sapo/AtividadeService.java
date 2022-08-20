@@ -3,8 +3,8 @@ package sapo;
 public class AtividadeService {
 	AtividadeRepository ar;
 
-	public AtividadeService(AtividadeRepository ar) {
-		this.ar = ar;
+	public AtividadeService() {
+		this.ar = new AtividadeRepository();
 	}
 
 	public String[] AtributosAtividade(String atividadeId) {

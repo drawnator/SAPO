@@ -3,7 +3,7 @@ package sapo;
 public class AtividadeController {
 	AtividadeRepository ar;
 
-	public AtividadeController(AtividadeRepository ar) {
+	public AtividadeController(AtividadeService ar) {
 		this.ar = ar;
 	}
 

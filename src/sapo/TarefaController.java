@@ -3,10 +3,12 @@ package sapo;
 public class TarefaController {
     TarefaService ts;
     PessoaService ps;
+    AtividadeService as;
     
-    public TarefaController(TarefaService ts, PessoaService ps) {
+    public TarefaController(TarefaService ts, PessoaService ps, AtividadeService as) {
         this.ts = ts;
         this.ps = ps;
+        this.as = as;
     }
     String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         return this.ts.cadastrarTarefa(atividadeId, nome, habilidades);
@@ -29,8 +31,8 @@ public class TarefaController {
     void removerTarefa(String idTarefa){
         this.ts.removerTarefa(idTarefa);
     }
-    String exibirTarefa(String idTarefa, ){
-        return this.ts.exibirTarefa(idTarefa);
+    String exibirTarefa(String idTarefa){
+        return this.ts.exibirTarefa(idTarefa, this.ps, this.as);
     }
     void associarPessoaTarefa(String cpf, String idTarefa){
         this.ts.associarPessoaTarefa(cpf, idTarefa);

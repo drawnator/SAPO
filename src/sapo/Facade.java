@@ -13,7 +13,7 @@ public class Facade {
 
         this.pessoaController = new PessoaController(pessoaService);
         this.atividadeController = new AtividadeController(atividadeService);
-        this.tarefaController = new TarefaController(tarefaService, pessoaService);
+        this.tarefaController = new TarefaController(tarefaService, pessoaService, atividadeService);
         
     }
 	

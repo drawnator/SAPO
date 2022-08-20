@@ -31,8 +31,30 @@ public class TarefaService {
     void removerTarefa(String idTarefa){
         this.tr.removerTarefa(idTarefa);
     }
-    String exibirTarefa(String idTarefa){
-        return this.tr.getTarefa(idTarefa).toString();
+    String exibirTarefa(String idTarefa, PessoaService ps, AtividadeService as){
+        
+        Tarefa tarefa = this.tr.getTarefa(idTarefa);
+        String output = "";
+        output += tarefa.nome + " - " + tarefa.getId() + "\n";
+        //output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
+        output +=  "- " + as.AtributosAtividade(tarefa.getIdAtividade())[0] + "\n";
+        String[] habilidades = tarefa.getHabilidades();
+        for (String habilidade : habilidades) {
+            output += habilidade;
+            if (habilidade != tarefa.habilidades[habilidades.length - 1]) {
+                output += ", ";
+            }
+        }
+        
+        output += "\n(" + tarefa.getDuracao() + " hora(s) executadas))\n";
+        output += "===\n";
+        output += "Equipe:\n";
+        for (String cpf : tarefa.getPessoas()) {
+            output += ps.getPessoa(cpf).getNome() + " - " + cpf;
+        }
+        return output;
+        
+    }
     }
     void associarPessoaTarefa(String cpf, String idTarefa){
         this.tr.getTarefa(idTarefa).associarPessoa(cpf);
@@ -40,23 +62,6 @@ public class TarefaService {
     void removerPessoaTarefa(String cpf, String idTarefa){
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
     }
-    String representacao(String idTarefa){
-        Tarefa tarefa = this.tr.getTarefa(idTarefa);
-        String output = "";
-        output += tarefa.nome + " - " + tarefa.getId() + "\n";
-        output +=  "- " + tarefa.getNomeAtividade + "\n";
-        for (String habilidade : tarefa.habilidades) {
-            output += habilidade;
-            if (habilidade != tarefa.habilidades[tarefa.habilidades.length - 1]) {
-                output += ", ";
-            }
-        output += "\n(" + tarefa.duracao + " hora(s) executadas))\n";
-        output += "===\n";
-        output += "Equipe:\n";
-        for (Pessoa pessoa : tarefa.pessoas.keySet()) {
-            output += pessoa + " - " + tarefa.pessoas.get(pessoa.getCpf());
-        }
-        return output;
-    }
+    
     
 }

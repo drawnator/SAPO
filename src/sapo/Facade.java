@@ -9,10 +9,11 @@ public class Facade {
     public Facade() {
         var atividadeService = new AtividadeService();
         var pessoaService = new PessoaService();
+        var tarefaService = new TarefaService();
 
-        this.pessoaController = new PessoaController(this.pessoaService);
+        this.pessoaController = new PessoaController(pessoaService);
         this.atividadeController = new AtividadeController(atividadeService);
-        this.tarefaController = new TarefaController(this.tarefaRepository);
+        this.tarefaController = new TarefaController(tarefaService, pessoaService);
         
     }
 	

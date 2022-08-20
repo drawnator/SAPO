@@ -55,7 +55,6 @@ public class TarefaService {
         return output;
         
     }
-    }
     void associarPessoaTarefa(String cpf, String idTarefa){
         this.tr.getTarefa(idTarefa).associarPessoa(cpf);
     }

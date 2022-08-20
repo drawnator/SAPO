@@ -1,10 +1,10 @@
 package sapo;
 
-public class PessoasController {
+public class PessoaController {
 	
 	PessoaRepository pr;
 	
-	public PessoasController(PessoaRepository pr) {
+	public PessoaController(PessoaRepository pr) {
 		this.pr = pr;
 	}
 	

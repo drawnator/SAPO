@@ -7,6 +7,15 @@ public class AtividadeService {
 		this.ar = ar;
 	}
 
+	public String[] AtributosAtividade(String atividadeId) {
+		String[] atributos = new String[4];
+		atributos[0] = ar.getAtividade(atividadeId).getNome();
+		atributos[1] = ar.getAtividade(atividadeId).getDescricao();
+		atributos[2] = ar.getAtividade(atividadeId).getCodigo();
+		atributos[3] = ar.getAtividade(atividadeId).getcpfResponsavel();
+		return atributos;
+	}
+	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		int numeroAtividade = ar.tamanhoListaAtividade();
 		String id = geraSigla(nome) + "-" + numeroAtividade;
@@ -27,10 +36,6 @@ public class AtividadeService {
 		ar.getAtividade(atividadeId).reabrir();
 	}
 
-	public String exibirAtividade(String atividadeId) {
-		return ar.getAtividade(atividadeId).toString();
-	}
-
 	public void alterarDescricaoAtividade(String atividadeId, String descricao) {
 		ar.getAtividade(atividadeId).alterarDescricao(descricao);
 	}
@@ -47,11 +52,14 @@ public class AtividadeService {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
+		String descricao = ar.getAtividade(cpfResponsa).getDescricao();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
 			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
 		}
-		
+		texto += "===\n";
+		texto += descricao + "\n";
+		texto += "===\n";
 		return texto;
 
 	}

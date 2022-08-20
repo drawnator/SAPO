@@ -23,6 +23,10 @@ public class Atividade {
 		this.tarefasPendentes = 0;
 		this.tarefasRealizadas = 0;
 	}
+	public String getNome() {return this.nome;}
+	public String getDescricao() {return this.descricao;}
+	public String getCodigo() {return this.codigo;}
+	public String getcpfResponsavel() {return this.cpfResponsavel();}
 
 	public void encerrar() throws IllegalStateException {
 		if (this.status == "aberta") {
@@ -69,12 +73,4 @@ public class Atividade {
 		this.cpfResponsavel = null;
 	}
 
-	@Override
-	public String toString() {
-		String texto = this.codigo + ": " + this.nome + "\n";
-		if (this.cpfResponsavel != null) {
-			texto += "Responsavel: "+ " - " + this.cpfResponsavel;
-		}
-		return texto;
-	}
 }

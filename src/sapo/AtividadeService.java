@@ -43,6 +43,18 @@ public class AtividadeService {
 		ar.getAtividade(atividadeId).alterarResponsavel(null);
 	}
 	
+	public String representacao(PessoaService ps,String atividadeId) {
+		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
+		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
+		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
+		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
+		if (cpfResponsa != null) {
+			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
+		}
+		
+		return texto;
+
+	}
 	private String geraSigla(String nome) {
 		String sigla = "";
 		String vogais = "aeiouAEIOU ";

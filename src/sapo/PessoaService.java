@@ -1,5 +1,7 @@
 package sapo;
 
+import java.util.HashMap;
+
 public class PessoaService {
 	
 	PessoaRepository pr;
@@ -59,5 +61,9 @@ public class PessoaService {
 	
 	public Pessoa getPessoa(String cpf) {
 		return pr.getPessoa(cpf);
+	}
+	
+	public HashMap<String, Pessoa> getHashMap() {
+		return pr.getMap();
 	}
 }

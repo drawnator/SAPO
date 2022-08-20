@@ -53,21 +53,28 @@ public class Atividade {
 			throw new IllegalStateException("atividade ja aberta");
 		} else {
 			this.status = "aberta";
-			
+
 		}
 	}
 
 	public void alterarDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 	public void alterarResponsavel(String cpf) {
 		this.cpfResponsavel = cpf;
 	}
-	
+
+	public void removerResponsavel() {
+		this.cpfResponsavel = null;
+	}
+
 	@Override
 	public String toString() {
-		String texto = this.codigo+": "+this.nome; 
+		String texto = this.codigo + ": " + this.nome + "\n";
+		if (this.cpfResponsavel != null) {
+			texto += "Responsavel: "+ " - " + this.cpfResponsavel;
+		}
 		return texto;
 	}
 }

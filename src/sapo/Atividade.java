@@ -67,6 +67,7 @@ public class Atividade {
 	
 	@Override
 	public String toString() {
-		return null;
+		String texto = this.codigo+": "+this.nome; 
+		return texto;
 	}
 }

@@ -4,3 +4,7 @@
 bin/sapo/AtividadeController.class
 bin/sapo/AtividadeRepository.class
 bin/sapo/Atividade.class
+bin/sapo/Tarefa.class
+bin/sapo/TarefaController.class
+bin/sapo/TarefaRepository.class
+bin/sapo/TarefaController.class

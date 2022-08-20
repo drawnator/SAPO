@@ -8,11 +8,12 @@ public class AtividadeService {
 	}
 
 	public String[] AtributosAtividade(String atividadeId) {
-		String[] atributos = new String[4];
+		String[] atributos = new String[5];
 		atributos[0] = ar.getAtividade(atividadeId).getNome();
 		atributos[1] = ar.getAtividade(atividadeId).getDescricao();
 		atributos[2] = ar.getAtividade(atividadeId).getCodigo();
 		atributos[3] = ar.getAtividade(atividadeId).getcpfResponsavel();
+		atributos[4] = ar.getAtividade(atividadeId).gettarefascadastradas();
 		return atributos;
 	}
 	

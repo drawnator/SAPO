@@ -1,6 +1,5 @@
 package sapo;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -75,27 +74,4 @@ public class Tarefa {
     public String getIdAtividade() {
         return this.idAtividade;
     }
-
-    public String toString() {
-        String output = "";
-        output += this.nome + " - " + this.id + "\n";
-        output +=  "- " + this.nomeAtividade + "\n";
-        for (String habilidade : this.habilidades) {
-            output += habilidade;
-            if (habilidade != this.habilidades[this.habilidades.length - 1]) {
-                output += ", ";
-            }
-        output += "\n(" + this.duracao + " hora(s) executadas))\n";
-        output += "===\n";
-        output += "Equipe:\n";
-        for (Pessoa pessoa : this.pessoas.keySet()) {
-            output += pessoa + " - " + this.pessoas.get(pessoa.getCpf());
-        }
-        return output;
-    }
-
-
-
-    
-
 }

@@ -7,11 +7,9 @@ public class Facade {
     private TarefaController tarefaController;
 
     public Facade() {
-
         this.pessoaController = new PessoaController();
-
-        // … demais controllers
-
+        this.atividadeController = new AtividadeController();
+        this.tarefaController = new TarefaController();
     }
 
     public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {

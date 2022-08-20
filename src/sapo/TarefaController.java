@@ -3,8 +3,8 @@ package sapo;
 public class TarefaController {
     TarefaRepository tr;
     
-    public TarefaController() {
-        this.tr = new TarefaRepository();
+    public TarefaController(TarefaRepository tr) {
+        this.tr = tr;
     }
     String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         return this.tr.cadastrarTarefa(atividadeId, nome, habilidades);

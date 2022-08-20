@@ -41,20 +41,5 @@ public class AtividadeRepository {
 	
 	@Override
 	public String toString() {return null;}
-	private String geraSigla(String nome) {
-		String sigla = "";
-		String vogais = "aeiouAEIOU ";
-		for(int i =0;i<nome.length();i++) {
-			String letra = "" + nome.charAt(i);
-			if (sigla.length() < 3 || !vogais.contains(letra)) {
-				sigla += letra;
-			}
-			}
-		while (sigla.length() < 3){
-			sigla += "X";
-		}
-		return sigla;
-	}
-	
 
 }

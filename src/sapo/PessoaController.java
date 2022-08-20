@@ -36,7 +36,7 @@ public class PessoaController {
 		return ps.listarComentariosPessoa(cpf);
 	}
 	
-	public String getNome(String cpf ) {
+	public String getNome(String cpf) {
 		return ps.getNome(cpf);
 	}
 	

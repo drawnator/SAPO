@@ -8,6 +8,11 @@ public class AtividadeRepository {
 	public AtividadeRepository() {
 		this.listaAtividades = new HashMap<String,Atividade>();
 	}
+	
+	public Map<String,Atividade> getListaAtividade(){
+		return this.listaAtividades;
+	}
+	
 	public String cadastrarAtividade(String nome,String descricao,String cpf) {
 		int numeroAtividade = listaAtividades.size();
 		String id = geraSigla(nome)+"-"+numeroAtividade;

@@ -8,6 +8,8 @@ public class Facade {
     private PessoaRepository pessoaRepository;
     private AtividadeRepository atividadeRepository;
     private TarefaRepository tarefaRepository;
+    private AtividadeService atividadeService;
+    private PessoaService pessoaService;
 
     public Facade() {
         this.pessoaRepository = new PessoaRepository();

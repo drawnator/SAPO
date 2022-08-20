@@ -1,2 +1,5 @@
 /bin/sapo/*.class
 *.class
+*.class
+bin/sapo/AtividadeController.class
+bin/sapo/AtividadeRepository.class

@@ -1,4 +1,4 @@
-package atividade;
+package sapo.atividade;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,10 @@
 package sapo;
 
+import atividade.*;
+import pessoa.*;
+import pessoa.PessoaService;
+import tarefa.*;
+
 public class Facade {
 
     private PessoaController pessoaController;

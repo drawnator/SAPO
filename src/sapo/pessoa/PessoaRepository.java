@@ -1,4 +1,4 @@
-package sapo;
+package sapo.pessoa;
 
 import java.util.HashMap;
 

@@ -1,14 +1,13 @@
-package sapo;
+package sapo.pessoa;
 
 import java.util.HashMap;
 
 public class PessoaService {
 	
-	PessoaRepository pr;
+	private PessoaRepository pr;
 	
 	public PessoaService() {
 		this.pr = new PessoaRepository();
-
 	}
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) throws IllegalArgumentException{

@@ -11,7 +11,4 @@ bin/sapo/TarefaController.class
 bin/sapo/Atividade.class
 *.class
 *.class
-bin/sapo/Atividade.class
-bin/sapo/Tarefa.class
-bin/sapo/TarefaController.class
-bin/sapo/TarefaRepository.class
+*.class

@@ -1,4 +1,4 @@
-package sapo.tarefa;
+package sapo;
 
 public class TarefaGerencialController {
 	
@@ -9,8 +9,7 @@ public class TarefaGerencialController {
 	}
 	
 	public String cadastrarTarefaGerencial(String atividadeId, String nome, String[] habilidades, String[] idTarefas) {
-		return null;
-		// TBD
+		return tgs.cadastraTarefaGerencial(String atividadeId, String nome, String[] habilidades, String[] idTarefas);
 	}
 	
 	public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
@@ -21,7 +20,6 @@ public class TarefaGerencialController {
 		
 	}
 	public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
-		return -1;
-		// TBD
+		
 	}
 }

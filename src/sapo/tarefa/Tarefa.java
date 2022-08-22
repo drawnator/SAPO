@@ -1,4 +1,4 @@
-package tarefa;
+package sapo.tarefa;
 
 import java.util.HashSet;
 import java.util.Set;

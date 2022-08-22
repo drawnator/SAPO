@@ -1,4 +1,7 @@
-package tarefa;
+package sapo.tarefa;
+
+import sapo.atividade.AtividadeService;
+import sapo.pessoa.PessoaService;
 
 public class TarefaService {
     private TarefaRepository tr;

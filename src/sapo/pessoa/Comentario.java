@@ -1,4 +1,4 @@
-package src;
+package sapo.pessoa;
 
 public class Comentario {
 	

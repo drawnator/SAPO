@@ -1,9 +1,8 @@
 package sapo;
 
-import atividade.*;
-import pessoa.*;
-import pessoa.PessoaService;
-import tarefa.*;
+import sapo.atividade.*;
+import sapo.pessoa.*;
+import sapo.tarefa.*;
 
 public class Facade {
 

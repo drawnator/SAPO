@@ -1,4 +1,4 @@
-package pessoa;
+package sapo.pessoa;
 
 import java.util.Arrays;
 import java.util.List;

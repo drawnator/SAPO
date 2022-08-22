@@ -69,6 +69,10 @@ public class Atividade {
 	public void removerResponsavel() {
 		this.cpfResponsavel = null;
 	}
+	
+	public String getStatus() {
+		return this.status;
+	}
 
 	public String addTarefa(Tarefa tarefa) {
 		listaTarefas.add(tarefa.getId());

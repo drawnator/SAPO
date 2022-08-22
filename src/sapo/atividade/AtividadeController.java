@@ -22,6 +22,7 @@ public class AtividadeController {
 	public String getDescricao(String atividadeId) {return as.getDescricao(atividadeId);}
 	public String getCodigo(String atividadeId) {return as.getCodigo(atividadeId);}
 	public String getResponsavel(String atividadeId) {return as.getResponsavel(atividadeId);}
+	public String getStatus(String atividadeId) {return as.getStatus(atividadeId);}
 	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return as.getTarefasCadastradas(atividadeId);}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {

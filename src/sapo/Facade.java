@@ -16,9 +16,13 @@ public class Facade {
         var tarefaService = new TarefaService();
 
         this.pessoaController = new PessoaController(pessoaService);
-        this.atividadeController = new AtividadeController(atividadeService);
+        this.atividadeController = new AtividadeController(atividadeService, pessoaService, tarefaService);
         this.tarefaController = new TarefaController(tarefaService, pessoaService, atividadeService);
         
+    }
+    
+    public AtividadeController getAtividadeController() {
+    	return this.atividadeController;
     }
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {

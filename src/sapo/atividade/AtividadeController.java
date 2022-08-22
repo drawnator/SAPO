@@ -1,38 +1,64 @@
 package sapo.atividade;
 
+import java.util.ArrayList;
+
+import sapo.pessoa.PessoaService;
+import sapo.tarefa.Tarefa;
+import sapo.tarefa.TarefaService;
+
 public class AtividadeController {
-	AtividadeRepository ar;
+	AtividadeService as;
+	PessoaService ps;
+	TarefaService ts;
 
-	public AtividadeController(AtividadeService ar) {
-		this.ar = ar;
+	public AtividadeController(AtividadeService as,PessoaService ps, TarefaService ts) {
+		this.as = as;
+		this.ps = ps;
+		this.ts = ts;
+		
 	}
-
+	
+	public String getNome(String atividadeId) {return as.getNome(atividadeId);}
+	public String getDescricao(String atividadeId) {return as.getDescricao(atividadeId);}
+	public String getCodigo(String atividadeId) {return as.getCodigo(atividadeId);}
+	public String getResponsavel(String atividadeId) {return as.getResponsavel(atividadeId);}
+	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return as.getTarefasCadastradas(atividadeId);}
+	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
-		return ar.cadastrarAtividade(nome, descricao, cpf);
+		return as.cadastrarAtividade(nome, descricao, cpf);
+	}
+	
+	public int addTarefa(String atividadeId, Tarefa tarefa) {
+		return as.addTarefa(atividadeId, tarefa);
 	}
 
 	public void encerrarAtividade(String atividadeId) {
-		ar.encerrarAtividade(atividadeId);
+		as.encerrarAtividade(atividadeId);
 	}
 
 	public void desativarAtividade(String atividadeId) {
-		ar.desativarAtividade(atividadeId);
+		as.encerrarAtividade(atividadeId);
 	}
 
 	public void reabrirAtividade(String atividadeId) {
-		ar.reabrirAtividade(atividadeId);
-	}
-
-	public String exibirAtividade(String atividadeId) {
-		return ar.exibirAtividade(atividadeId);
+		as.reabrirAtividade(atividadeId);
 	}
 
 	public void alterarDescricaoAtividade(String atividadeId, String descricao) {
-		ar.alterarDescricaoAtividade(atividadeId, descricao);
+		as.alterarDescricaoAtividade(atividadeId, descricao);
 	}
 
 	public void alterarResponsavelAtividade(String atividadeId, String cpf) {
-		ar.alterarDescricaoAtividade(atividadeId, cpf);
+		as.alterarResponsavelAtividade(atividadeId, cpf);
+	}
+
+	public void removerResponsavel(String atividadeId) {
+		as.removerResponsavel(atividadeId);
+	}
+	
+	public String representacao(PessoaService ps, TarefaService ts,String atividadeId) {
+		return as.representacao(ps, ts, atividadeId);
+
 	}
 
 }

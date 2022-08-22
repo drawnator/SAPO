@@ -1,5 +1,6 @@
 package sapo.atividade;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import sapo.tarefa.Tarefa;
@@ -10,10 +11,7 @@ public class Atividade {
 	private String descricao;
 	private String cpfResponsavel;
 	private String status;
-	private int tarefasRealizadas;
-	private int tarefasPendentes;
-	private int tafetasCadastradas;
-	private Map<String, Tarefa> listaTarefas;
+	private ArrayList<String> listaTarefas;
 
 	public Atividade(String nome, String descricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;
@@ -21,19 +19,16 @@ public class Atividade {
 		this.cpfResponsavel = cpfResponsavel;
 		this.codigo = sigla;
 		this.status = "aberta";
-		this.tafetasCadastradas = 0;
-		this.tarefasPendentes = 0;
-		this.tarefasRealizadas = 0;
 	}
 	public String getNome() {return this.nome;}
 	public String getDescricao() {return this.descricao;}
 	public String getCodigo() {return this.codigo;}
 	public String getcpfResponsavel() {return this.cpfResponsavel;}
-	public String gettarefascadastradas() {return ""+this.tafetasCadastradas;}
+	public ArrayList<String> gettarefascadastradas() {return this.listaTarefas;}
 
 	public void encerrar() throws IllegalStateException {
 		if (this.status == "aberta") {
-			if (this.tarefasPendentes == 0) {
+			if (this.listaTarefas.size() == 0) {
 				this.status = "encerrada";
 			} else {
 				throw new IllegalStateException("tarefas ainda pendentes");
@@ -45,7 +40,7 @@ public class Atividade {
 
 	public void desativar() throws IllegalStateException {
 		if (this.status == "aberta") {
-			if (this.tarefasPendentes == 0) {
+			if (this.listaTarefas.size() == 0) {
 				this.status = "desativada";
 			} else {
 				throw new IllegalStateException("tarefas ainda pendentes");
@@ -77,7 +72,7 @@ public class Atividade {
 	}
 
 	public String addTarefa(Tarefa tarefa) {
-		listaTarefas.put(tarefa.getId(), tarefa);
+		listaTarefas.add(tarefa.getId());
 		return tarefa.getId();
 	}
 }

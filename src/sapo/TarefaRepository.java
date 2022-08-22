@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TarefaRepository {
     private Map<String, Tarefa> tarefas;
-    int tarefasCadastradas;
+    private int tarefasCadastradas;
 
     public TarefaRepository() {
         this.tarefas = new HashMap<String, Tarefa>();

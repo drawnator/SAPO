@@ -1,9 +1,9 @@
 package sapo;
 
 public class TarefaController {
-    TarefaService ts;
-    PessoaService ps;
-    AtividadeService as;
+    private TarefaService ts;
+    private PessoaService ps;
+    private AtividadeService as;
     
     public TarefaController(TarefaService ts, PessoaService ps, AtividadeService as) {
         this.ts = ts;

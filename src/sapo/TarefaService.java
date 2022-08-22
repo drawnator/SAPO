@@ -35,13 +35,13 @@ public class TarefaService {
         
         Tarefa tarefa = this.tr.getTarefa(idTarefa);
         String output = "";
-        output += tarefa.nome + " - " + tarefa.getId() + "\n";
+        output += tarefa.getNome() + " - " + tarefa.getId() + "\n";
         //output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
         output +=  "- " + as.AtributosAtividade(tarefa.getIdAtividade())[0] + "\n";
         String[] habilidades = tarefa.getHabilidades();
         for (String habilidade : habilidades) {
             output += habilidade;
-            if (habilidade != tarefa.habilidades[habilidades.length - 1]) {
+            if (!habilidade.equals(habilidades[habilidades.length - 1])) {
                 output += ", ";
             }
         }

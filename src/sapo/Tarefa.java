@@ -4,13 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Tarefa {
-    String id;  
-    String idAtividade;
-    int duracao;
-    String nome;
-    String[] habilidades;
-    HashSet<String> pessoas;
-    boolean concluida;
+    private String id;  
+    private String idAtividade;
+    private int duracao;
+    private String nome;
+    private String[] habilidades;
+    private HashSet<String> pessoas;
+    private boolean concluida;
     
     public Tarefa(String id, String nome, String[] habilidades, int tarefasCadastradas) {
         this.idAtividade = id;

@@ -76,11 +76,11 @@ public class AtividadeService {
 	
 	private String geraSigla(String nome) {
 		String sigla = "";
-		String vogais = "aeiouAEIOU ";
+		String vogais = "aeiouAEIOU 123456789";
 		for (int i = 0; i < nome.length(); i++) {
 			String letra = "" + nome.charAt(i);
-			if (sigla.length() < 3 || !vogais.contains(letra)) {
-				sigla += letra;
+			if (sigla.length() < 3 && !vogais.contains(letra)) {
+				sigla += letra.toUpperCase();
 			}
 		}
 		while (sigla.length() < 3) {

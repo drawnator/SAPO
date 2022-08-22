@@ -18,6 +18,7 @@ public class Atividade {
 		this.cpfResponsavel = cpfResponsavel;
 		this.codigo = sigla;
 		this.status = "aberta";
+		this.listaTarefas = new ArrayList<String>();
 	}
 	public String getNome() {return this.nome;}
 	public String getDescricao() {return this.descricao;}

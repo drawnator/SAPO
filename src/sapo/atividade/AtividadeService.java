@@ -3,24 +3,22 @@ package sapo.atividade;
 import java.util.ArrayList;
 import java.util.List;
 
+import sapo.pessoa.PessoaService;
+import sapo.tarefa.Tarefa;
+import sapo.tarefa.TarefaService;
+
 public class AtividadeService {
 	private AtividadeRepository ar;
-	private ArrayList<String> tarefas;
 
 	public AtividadeService() {
 		this.ar = new AtividadeRepository();
-		this.tarefas = new ArrayList<String>();
 	}
 
-	public String[] AtributosAtividade(String atividadeId) {
-		String[] atributos = new String[5];
-		atributos[0] = ar.getAtividade(atividadeId).getNome();
-		atributos[1] = ar.getAtividade(atividadeId).getDescricao();
-		atributos[2] = ar.getAtividade(atividadeId).getCodigo();
-		atributos[3] = ar.getAtividade(atividadeId).getcpfResponsavel();
-		atributos[4] = ar.getAtividade(atividadeId).gettarefascadastradas();
-		return atributos;
-	}
+	public String getNome(String atividadeId) {return ar.getAtividade(atividadeId).getNome();}
+	public String getDescricao(String atividadeId) {return ar.getAtividade(atividadeId).getDescricao();}
+	public String getCodigo(String atividadeId) {return ar.getAtividade(atividadeId).getCodigo();}
+	public String getResponsavel(String atividadeId) {return ar.getAtividade(atividadeId).getcpfResponsavel();}
+	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		int numeroAtividade = ar.tamanhoListaAtividade();
@@ -28,6 +26,11 @@ public class AtividadeService {
 		Atividade novaAtividade = new Atividade(nome, descricao, cpf, id);
 		ar.cadastrarAtividade(id, novaAtividade);
 		return id;
+	}
+	
+	public int addTarefa(String atividadeId, Tarefa tarefa) {
+		ar.getAtividade(atividadeId).addTarefa(tarefa);
+		return ar.getAtividade(atividadeId).gettarefascadastradas().size();
 	}
 
 	public void encerrarAtividade(String atividadeId) {

@@ -1,14 +1,16 @@
-package tests;
+package sapo.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import sapo.AtividadeService;
-import sapo.PessoaService;
-import sapo.TarefaController;
-import sapo.TarefaService;
+import sapo.atividade.AtividadeService;
+import sapo.pessoa.PessoaService;
+import sapo.tarefa.TarefaController;
+import sapo.tarefa.TarefaService;
+
+
 
 class TarefaTests {
 	

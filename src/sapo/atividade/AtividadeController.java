@@ -1,4 +1,4 @@
-package sapo;
+package sapo.atividade;
 
 public class AtividadeController {
 	AtividadeRepository ar;

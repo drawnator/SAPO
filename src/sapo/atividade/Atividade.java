@@ -1,6 +1,8 @@
-package sapo;
+package sapo.atividade;
 
 import java.util.Map;
+
+import sapo.tarefa.Tarefa;
 
 public class Atividade {
 	private String nome;

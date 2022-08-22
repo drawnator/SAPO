@@ -1,4 +1,4 @@
-package sapo;
+package atividade;
 
 public class AtividadeService {
 	AtividadeRepository ar;

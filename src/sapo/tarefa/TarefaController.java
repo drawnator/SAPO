@@ -43,4 +43,13 @@ public class TarefaController {
     public void removerPessoaTarefa(String cpf, String idTarefa){
         this.ts.removerPessoaTarefa(cpf, idTarefa);
     }
+    public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
+    	
+    }
+    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    	
+    }
+    public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    	
+    }
 }

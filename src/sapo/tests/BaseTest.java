@@ -1,9 +1,14 @@
 package sapo.tests;
 
-//import sapo.atividade.*;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
+class BaseTest {
 
-public class BaseTest {
-    
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
 }

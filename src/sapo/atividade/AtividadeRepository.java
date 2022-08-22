@@ -1,4 +1,4 @@
-package sapo;
+package sapo.atividade;
 
 import java.util.HashMap;
 import java.util.Map;

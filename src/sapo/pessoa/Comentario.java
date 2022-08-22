@@ -1,4 +1,4 @@
-package sapo;
+package src;
 
 public class Comentario {
 	

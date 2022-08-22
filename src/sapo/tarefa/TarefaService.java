@@ -1,4 +1,4 @@
-package sapo;
+package tarefa;
 
 public class TarefaService {
     private TarefaRepository tr;

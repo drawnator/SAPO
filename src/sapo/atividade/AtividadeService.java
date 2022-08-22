@@ -1,10 +1,15 @@
-package sapo;
+package atividade;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AtividadeService {
-	AtividadeRepository ar;
+	private AtividadeRepository ar;
+	private ArrayList<String> tarefas;
 
 	public AtividadeService() {
 		this.ar = new AtividadeRepository();
+		this.tarefas = new ArrayList<String>();
 	}
 
 	public String[] AtributosAtividade(String atividadeId) {
@@ -49,7 +54,7 @@ public class AtividadeService {
 		ar.getAtividade(atividadeId).alterarResponsavel(null);
 	}
 	
-	public String representacao(PessoaService ps,String atividadeId) {
+	public String representacao(PessoaService ps, TarefaService ts,String atividadeId) {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
@@ -61,9 +66,11 @@ public class AtividadeService {
 		texto += "===\n";
 		texto += descricao + "\n";
 		texto += "===\n";
+		
 		return texto;
 
 	}
+	
 	private String geraSigla(String nome) {
 		String sigla = "";
 		String vogais = "aeiouAEIOU ";

@@ -1,7 +1,6 @@
 package sapo.atividade;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import sapo.pessoa.PessoaService;
 import sapo.tarefa.Tarefa;

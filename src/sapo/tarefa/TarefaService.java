@@ -69,5 +69,15 @@ public class TarefaService {
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
     }
     
+    public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
+    	
+    }
+    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    	
+    }
+    public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    	
+    }
+    
     
 }

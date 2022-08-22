@@ -9,6 +9,10 @@ public class TarefaService {
     public TarefaService() {
         this.tr = new TarefaRepository();
     }
+
+    Tarefa getTarefa(String idTarefa){
+        return this.tr.getTarefa(idTarefa);
+    }
     
     String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         Tarefa tarefa = new Tarefa(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas());

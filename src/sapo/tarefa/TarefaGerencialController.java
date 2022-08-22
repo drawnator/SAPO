@@ -1,4 +1,4 @@
-package sapo;
+package sapo.tarefa;
 
 public class TarefaGerencialController {
 	

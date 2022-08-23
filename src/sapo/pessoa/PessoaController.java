@@ -45,19 +45,29 @@ public class PessoaController {
 	}
 
 	public void cadastrarAluno(String cpf, String matr, int periodo, String[] habilidades){
-		this.ps.cadastrarAluno(cpf, matr, periodo, habilidades);
+		//this.ps.cadastrarAluno(cpf, matr, periodo, habilidades);
 	}
 
 	public void cadastrarProfessor(String cpf, String nome, String siape, String[] disciplinas, String[] habilidades){
 	}
 
-	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas): void
+	public void definirFuncaoAluno(String cpf, String matr, int periodo){
+		
+	}
 
-+ definirFuncaoAluno(cpf: str, matr: str, periodo: int): void
+	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas){
 
-+ removerFuncao(cpf: str): void
+	}
 
-+ pegarNivel(cpf: str): int
+	public void removerFuncao(String cpf){
 
-+ listarPessoas(): str[]
+	}
+
+	/*public int pegarNivel(String cpf){
+
+	}
+
+	public String[] listarPessoas(){
+
+	}*/
 }

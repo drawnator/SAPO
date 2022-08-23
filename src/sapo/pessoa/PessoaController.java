@@ -43,4 +43,21 @@ public class PessoaController {
 	public Pessoa getPessoa(String cpf) {
 		return ps.getPessoa(cpf);
 	}
+
+	public void cadastrarAluno(String cpf, String matr, int periodo, String[] habilidades){
+		this.ps.cadastrarAluno(cpf, matr, periodo, habilidades);
+	}
+
+	public void cadastrarProfessor(String cpf, String nome, String siape, String[] disciplinas, String[] habilidades){
+	}
+
+	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas): void
+
++ definirFuncaoAluno(cpf: str, matr: str, periodo: int): void
+
++ removerFuncao(cpf: str): void
+
++ pegarNivel(cpf: str): int
+
++ listarPessoas(): str[]
 }

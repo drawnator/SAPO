@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import sapo.Facade;
 import sapo.atividade.AtividadeController;
+import sapo.buscas.Busca;
 import sapo.pessoa.PessoaController;
 import sapo.tarefa.TarefaController;
 
@@ -17,6 +18,7 @@ class BaseTest {
     protected AtividadeController atividadeController;
     protected PessoaController pessoaController;
     protected TarefaController tarefaController;
+    protected Busca busca;
 
 	@BeforeEach
     void setUp(){
@@ -24,6 +26,7 @@ class BaseTest {
         this.atividadeController = facade.getAtividadeController();
         this.pessoaController = facade.getPessoaController();
         this.tarefaController = facade.getTarefaController();
+        this.busca = facade.getBusca();
         facade.cadastrarPessoa("124.123.754-12", "Stias", HABILIDADES1_STRINGS);
         facade.cadastrarPessoa("101.102.103-14", "Pikachu", HABILIDADES2_STRINGS);
 

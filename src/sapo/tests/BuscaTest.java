@@ -10,5 +10,35 @@ class BuscaTest extends BaseTest {
 	void testExibirPessoas() {
 		assertEquals("blabla", this.busca.exibirPessoas("Stias"));
 	}
+	
+	@Test
+	void testBuscarAtividade() {
+		
+	}
+	
+	@Test
+	void testBuscarTarefas() {
+		
+	}
+	
+	@Test
+	void testBuscarTarefas2() {
+		
+	}
+	
+	@Test
+	void testSugerirTarefas() {
+		
+	}
+	
+	@Test
+	void testBuscasMaisRecentes() {
+		
+	}
+	
+	@Test
+	void testExibirHistoricoBusca() {
+		
+	}
 
 }

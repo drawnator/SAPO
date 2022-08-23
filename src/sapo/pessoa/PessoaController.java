@@ -1,5 +1,7 @@
 package sapo.pessoa;
 
+import java.util.NoSuchElementException;
+
 public class PessoaController {
 	
 	PessoaService ps;
@@ -12,7 +14,7 @@ public class PessoaController {
 		ps.cadastrarPessoa(cpf, nome, habilidades);
 	}
 	
-	public String exibirPessoa(String cpf) {
+	public String exibirPessoa(String cpf) throws NoSuchElementException {
 		return ps.exibirPessoa(cpf);
 	}
 	

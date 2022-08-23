@@ -1,5 +1,6 @@
 package sapo.pessoa;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Pessoa {
 		this.cpf = cpf;
 		this.nome = nome;
 		this.habilidades = habilidades;
+		this.comentarios = new ArrayList<Comentario>();
 	}
 	
 	@Override
@@ -57,15 +59,12 @@ public class Pessoa {
 		Comentario novoComentario = new Comentario(comentario, autorCpf);
 		comentarios.add(novoComentario);
 	}
-	
-	public String exibirComentarios() {
-		String exibicao = nome + " - " + cpf + "\nComentarios:\n";
-		for (int i = 0; i < comentarios.size(); i++) {
-			exibicao += "-- " + comentarios.get(i) + getAutor(i); 
-		}
-		return exibicao;
-	}
+
 	public String getAutor(int index) {
 		return comentarios.get(index).getCpfautor();
+	}
+	
+	public List<Comentario> getComentarios() {
+		return this.comentarios;
 	}
 }

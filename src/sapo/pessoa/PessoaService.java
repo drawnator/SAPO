@@ -1,6 +1,8 @@
 package sapo.pessoa;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class PessoaService {
@@ -22,7 +24,10 @@ public class PessoaService {
 		pr.cadastraPessoa(cpf, novaPessoa);
 	}
 	
-	public String exibirPessoa(String cpf) {
+	public String exibirPessoa(String cpf) throws NoSuchElementException {
+		if (pr.getPessoa(cpf) == null) {
+			throw new NoSuchElementException();
+		}
 		return pr.getPessoa(cpf).toString();
 	}
 	
@@ -49,7 +54,7 @@ public class PessoaService {
 	}
 	
 	public String listarComentariosPessoa(String cpf) {
-		return pr.getPessoa(cpf).exibirComentarios();
+		return exibirComentarios(cpf);
 		
 	}
 	public String getAutor(String cpf, int index) {
@@ -70,5 +75,14 @@ public class PessoaService {
 	
 	public Set<Pessoa> busca(String termo){
 		return pr.busca(termo);
+	}
+	
+	public String exibirComentarios(String cpf) {
+		String exibicao = pr.getNome(cpf) + " - " + cpf + "\nComentarios:\n";
+		List<Comentario> listaComent = pr.getPessoa(cpf).getComentarios();
+		for (int i = 0; i < listaComent.size(); i++) {
+			exibicao += "- " + listaComent.get(i).toString() +" ("+ pr.getNome(listaComent.get(i).getCpfautor()) + ")"; 
+		}
+		return exibicao;
 	}
 }

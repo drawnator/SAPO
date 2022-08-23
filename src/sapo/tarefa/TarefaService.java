@@ -95,9 +95,13 @@ public class TarefaService {
     	this.tr.incrementaTarefasCadastradas();
     	return tarefaGer.getId();  
     }
-    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) throws IllegalArgumentException {
     	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
     	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	if ( ((TarefaGerencial) tarefa).checarCiclo(idTarefaGerencial)) {
+    		throw new IllegalArgumentException();
+    	}
+    	tarefaGer.checaSeGerencial(tarefa);
     	tarefa.addPresenteGerencial(idTarefaGerencial);
     	tarefaGer.addTarefa(tarefa);
     }

@@ -1,6 +1,7 @@
 package sapo;
 
 import sapo.atividade.*;
+import sapo.buscas.Busca;
 import sapo.pessoa.*;
 import sapo.tarefa.*;
 
@@ -9,6 +10,7 @@ public class Facade {
     private PessoaController pessoaController;
     private AtividadeController atividadeController;
     private TarefaController tarefaController;
+    private Busca busca;
 
     public Facade() {
         var atividadeService = new AtividadeService();
@@ -18,6 +20,7 @@ public class Facade {
         this.pessoaController = new PessoaController(pessoaService);
         this.atividadeController = new AtividadeController(atividadeService, pessoaService, tarefaService);
         this.tarefaController = new TarefaController(tarefaService, pessoaService, atividadeService);
+        this.busca = new Busca(atividadeService, pessoaService, tarefaService);
         
     }
     
@@ -33,6 +36,10 @@ public class Facade {
     	return this.tarefaController;
     }
 	
+    public Busca getBusca() {
+    	return this.busca;
+    }
+    
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {
 		this.pessoaController.cadastrarPessoa(cpf, nome, habilidades);
 	}

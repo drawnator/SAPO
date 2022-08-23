@@ -11,6 +11,7 @@ public class TarefaGerencial extends Tarefa {
 	// private int horas;
 	private HashSet<String> habilidadesUniao;
 	private String[] habilidadesTarefas;
+	private HashSet<String> gerenciaisAssociadas; //2
 	// private HashSet<String> pessoas;
 	// private boolean concluida;
 
@@ -32,6 +33,7 @@ public class TarefaGerencial extends Tarefa {
 		for (int i = 0; i < habilidadesNovas.length; i++) {
 			habilidadesUniao.add(habilidadesNovas[i]);
 		}
+		this.gerenciaisAssociadas = new HashSet<String>();
 	}
 
 	public void addTarefa(Tarefa tarefa) {
@@ -63,6 +65,25 @@ public class TarefaGerencial extends Tarefa {
 			}
 		}
 		return true;
+	}
+	
+	public boolean checaSeGerencial(Tarefa tarefa) {
+		if (tarefa.getClass() == this.getClass()) {
+			this.gerenciaisAssociadas.add(tarefa.getId());
+			for (String i: ((TarefaGerencial) tarefa).getGerenciaisAssociadas()) {
+				this.gerenciaisAssociadas.add(i);
+			}
+			return true;
+		} return false;
+	}
+	
+	public boolean checarCiclo(String idTarefa) {
+		if (this.gerenciaisAssociadas.contains(idTarefa)) {
+			return true;
+		} return false;
+	}
+	public HashSet<String> getGerenciaisAssociadas() {
+		return this.gerenciaisAssociadas;
 	}
 
 }

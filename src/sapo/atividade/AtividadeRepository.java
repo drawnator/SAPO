@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import sapo.tarefa.Tarefa;
+
 public class AtividadeRepository {
 	private Map<String,Atividade> listaAtividades;
 	public AtividadeRepository() {
@@ -33,6 +35,12 @@ public class AtividadeRepository {
 					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0
 							|| Arrays.binarySearch(x.getDescricao().toLowerCase().split(" "), termo.toLowerCase()) > 0
 							|| x.getCodigo().contains(termo))
+					.collect(Collectors.toSet());
+	}
+	
+	public Set<Tarefa> busca(String IdAtividade, String termo) {
+		return this.listaAtividades.get(IdAtividade).gettarefascadastradas().values().stream()
+					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0)
 					.collect(Collectors.toSet());
 	}
 

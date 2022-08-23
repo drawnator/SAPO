@@ -38,7 +38,7 @@ public class AtividadeController {
 	}
 
 	public void desativarAtividade(String atividadeId) {
-		as.encerrarAtividade(atividadeId);
+		as.desativarAtividade(atividadeId);
 	}
 
 	public void reabrirAtividade(String atividadeId) {

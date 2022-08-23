@@ -61,7 +61,7 @@ public class AtividadeService {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
-		String descricao = ar.getAtividade(cpfResponsa).getDescricao();
+		String descricao = ar.getAtividade(atividadeId).getDescricao();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
 			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";

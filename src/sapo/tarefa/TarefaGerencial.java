@@ -2,25 +2,28 @@ package sapo.tarefa;
 
 import java.util.HashSet;
 
-public class TarefaGerencial {
+public class TarefaGerencial extends Tarefa {
 	
-	private String id;
-	private String idAtividade;
-	private String nome;
-	private Tarefa[] tarefasAssociadas;
-	private int horas;
+	//private String id;
+	//private String idAtividade;
+	//private String nome;
+	private HashSet<Tarefa> tarefasAssociadas;
+	//private int horas;
 	private HashSet<String> habilidadesUniao;
 	private String[] habilidadesTarefas;
-	private HashSet<String> pessoas;
-	private boolean concluida;
+	//private HashSet<String> pessoas;
+	//private boolean concluida;
 	
 	
 	
-	public TarefaGerencial(String atividadeId, String nome, String[] habilidadesNovas, Tarefa[] tarefasRelacionadas) {
-		this.idAtividade = atividadeId;
-		this.nome = nome;
-		this.tarefasAssociadas = tarefasRelacionadas;
-		this.horas = 0;
+	public TarefaGerencial(String atividadeId, String nome, String[] habilidadesNovas ,int tarefasCadastradas, Tarefa[] tarefasRelacionadas) {
+		//this.idAtividade = atividadeId;
+		//this.nome = nome;
+		super(atividadeId, nome, habilidadesNovas, tarefasCadastradas);
+		for (int i = 0; i < tarefasRelacionadas.length; i++) {
+			this.tarefasAssociadas.add(tarefasRelacionadas[i]);
+		}
+		//this.horas = 0;
 		for (int i = 0; i < habilidadesNovas.length; i++) {
 			habilidadesTarefas = tarefasRelacionadas[i].getHabilidades();
 			for (int y = 0; y < habilidadesNovas.length; y++) {
@@ -32,18 +35,16 @@ public class TarefaGerencial {
 		}	
 	}
 	
-	public void addHoras(int horasAdd) {
-		this.horas += horasAdd;
-	}
-	
-	public void addHabilidades(String[] habilidades) {
+	public void addTarefa(Tarefa tarefa) {
+		String habilidades[] = tarefa.getHabilidades();
 		for (int y = 0; y < habilidades.length; y++) {
 			habilidadesUniao.add(habilidades[y]);
 		}
+		tarefasAssociadas.add(tarefa);
 	}
 	
 	public int contarTarefasAssociadas() {
-		return this.tarefasAssociadas.length;
+		return this.tarefasAssociadas.size();
 	}
 
 }

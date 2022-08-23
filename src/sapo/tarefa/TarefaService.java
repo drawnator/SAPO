@@ -76,12 +76,23 @@ public class TarefaService {
 	}
     
     public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
-    	
+    	Tarefa[] tarefasAssociadas = new Tarefa[idTarefas.length];
+    	for (int i = 0; i < tarefasAssociadas.length; i++) {
+    		tarefasAssociadas[i] = this.tr.getTarefa(idTarefas[i]);
+    	}
+    	TarefaGerencial tarefaGer = new TarefaGerencial(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas(), tarefasAssociadas);
+    	this.tr.cadastrarTarefa(tarefaGer);
+    	this.tr.incrementaTarefasCadastradas();
+    	return tarefaGer.getId();  
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	
+    	tarefaGer = tr.getTarefa(idTarefaGerencial);
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    	
+    }
+    
+    public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
     	
     }
     

@@ -36,4 +36,8 @@ public class TarefaRepository {
 					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0)
 					.collect(Collectors.toSet());
 	}
+    public int contaTarefasAssociadas(TarefaGerencial tarefaGer) {
+    	return tarefaGer.contarTarefasAssociadas();
+    }
+    
 }

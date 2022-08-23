@@ -1,6 +1,7 @@
 package sapo.atividade;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import sapo.tarefa.Tarefa;
 
@@ -10,7 +11,7 @@ public class Atividade {
 	private String descricao;
 	private String cpfResponsavel;
 	private String status;
-	private ArrayList<String> listaTarefas;
+	private HashMap<String,Tarefa> listaTarefas;
 
 	public Atividade(String nome, String descricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;
@@ -18,13 +19,13 @@ public class Atividade {
 		this.cpfResponsavel = cpfResponsavel;
 		this.codigo = sigla;
 		this.status = "aberta";
-		this.listaTarefas = new ArrayList<String>();
+		this.listaTarefas = new HashMap<String,Tarefa>();
 	}
 	public String getNome() {return this.nome;}
 	public String getDescricao() {return this.descricao;}
 	public String getCodigo() {return this.codigo;}
 	public String getcpfResponsavel() {return this.cpfResponsavel;}
-	public ArrayList<String> gettarefascadastradas() {return this.listaTarefas;}
+	public HashMap<String, Tarefa> gettarefascadastradas() {return this.listaTarefas;}
 
 	public void encerrar() throws IllegalStateException {
 		if (this.status == "aberta") {
@@ -76,7 +77,7 @@ public class Atividade {
 	}
 
 	public String addTarefa(Tarefa tarefa) {
-		listaTarefas.add(tarefa.getId());
+		listaTarefas.put(tarefa.getId(),tarefa);
 		return tarefa.getId();
 	}
 }

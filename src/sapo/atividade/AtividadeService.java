@@ -17,6 +17,7 @@ public class AtividadeService {
 	public String getDescricao(String atividadeId) {return ar.getAtividade(atividadeId).getDescricao();}
 	public String getCodigo(String atividadeId) {return ar.getAtividade(atividadeId).getCodigo();}
 	public String getResponsavel(String atividadeId) {return ar.getAtividade(atividadeId).getcpfResponsavel();}
+	public String getStatus(String atividadeId) {return ar.getAtividade(atividadeId).getStatus();}
 	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {

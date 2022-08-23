@@ -24,6 +24,14 @@ public class Facade {
     public AtividadeController getAtividadeController() {
     	return this.atividadeController;
     }
+    
+    public PessoaController getPessoaController() {
+    	return this.pessoaController;
+    }
+    
+    public TarefaController getTarefaController() {
+    	return this.tarefaController;
+    }
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {
 		this.pessoaController.cadastrarPessoa(cpf, nome, habilidades);

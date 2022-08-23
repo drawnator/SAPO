@@ -1,6 +1,7 @@
 package sapo.pessoa;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class PessoaService {
 	
@@ -12,10 +13,10 @@ public class PessoaService {
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) throws IllegalArgumentException{
 		if (cpf.equals("")) {
-			throw new IllegalArgumentException("cpf inválido");
+			throw new IllegalArgumentException("cpf invalido");
 		}
 		else if (nome.equals("")) {
-			throw new IllegalArgumentException("nome inválido");
+			throw new IllegalArgumentException("nome invalido");
 		}
 		Pessoa novaPessoa = new Pessoa(cpf, nome, habilidades);
 		pr.cadastraPessoa(cpf, novaPessoa);
@@ -27,7 +28,7 @@ public class PessoaService {
 	
 	public void alterarNomePessoa(String cpf, String novoNome) {
 		if (novoNome.equals("")) {
-			throw new IllegalArgumentException("nome inválido");
+			throw new IllegalArgumentException("nome invalido");
 		}
 		pr.getPessoa(cpf).setNome(novoNome);
 	}
@@ -65,5 +66,9 @@ public class PessoaService {
 	
 	public HashMap<String, Pessoa> getHashMap() {
 		return pr.getMap();
+	}
+	
+	public Set<Pessoa> busca(String termo){
+		return pr.busca(termo);
 	}
 }

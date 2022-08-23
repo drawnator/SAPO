@@ -1,7 +1,12 @@
 package sapo.atividade;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import sapo.tarefa.Tarefa;
 
 public class AtividadeRepository {
 	private Map<String,Atividade> listaAtividades;
@@ -25,7 +30,18 @@ public class AtividadeRepository {
 		return listaAtividades.get(ativadeId);
 	}
 	
-	@Override
-	public String toString() {return null;}
+	public Set<Atividade> busca(String termo) {
+		return this.listaAtividades.values().stream()
+					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0
+							|| Arrays.binarySearch(x.getDescricao().toLowerCase().split(" "), termo.toLowerCase()) > 0
+							|| x.getCodigo().contains(termo))
+					.collect(Collectors.toSet());
+	}
+	
+	public Set<Tarefa> busca(String IdAtividade, String termo) {
+		return this.listaAtividades.get(IdAtividade).gettarefascadastradas().values().stream()
+					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0)
+					.collect(Collectors.toSet());
+	}
 
 }

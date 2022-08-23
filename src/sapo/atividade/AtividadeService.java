@@ -58,11 +58,14 @@ public class AtividadeService {
 		ar.getAtividade(atividadeId).alterarResponsavel(null);
 	}
 	
-	public String representacao(PessoaService ps, TarefaService ts,String atividadeId) {
+	public String representacao(PessoaService ps, TarefaService ts,String atividadeId)throws IllegalArgumentException {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
 		String descricao = ar.getAtividade(atividadeId).getDescricao();
+		int nTarefasTotal = ar.getAtividade(atividadeId).gettarefascadastradas().size();
+		int nTarefasConcluidas = ar.getAtividade(atividadeId).nTarefasConcluidas();
+		Tarefa[] tarefaspendentes = ar.getAtividade(atividadeId).tarefasPendentes();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
 			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
@@ -70,7 +73,10 @@ public class AtividadeService {
 		texto += "===\n";
 		texto += descricao + "\n";
 		texto += "===\n";
-		
+		texto += "Tarefas: " + nTarefasConcluidas + "/" + nTarefasTotal + "\n";
+		for (Tarefa tarefa:ar.getAtividade(atividadeId).tarefasPendentes()) {
+			if (tarefa != null) {texto += "- " + tarefa.getNome() + " - " + tarefa.getId();}
+		}
 		return texto;
 
 	}

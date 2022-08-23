@@ -44,16 +44,12 @@ public class TarefaController {
         this.ts.removerPessoaTarefa(cpf, idTarefa);
     }
     public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
-    	return this.ts.cadastrarTarefaGerencial(atividadeId, nome, habilidades, idTarefas);
+    	
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	this.ts.adicionarNaTarefaGerencial(idTarefaGerencial, idTarefa);
+    	
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	this.ts.removerDaTarefaGerencial(idTarefaGerencial, idTarefa);
-    }
-    
-    public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
-    	return this.ts.contarTodasTarefasNaTarefaGerencial(idTarefaGerencial);
+    	
     }
 }

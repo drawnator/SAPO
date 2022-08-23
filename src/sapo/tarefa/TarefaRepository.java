@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class TarefaRepository {
     private Map<String, Tarefa> tarefas;
-    private Map<String, TarefaGerencial> tarefasGerenciais;
     private int tarefasCadastradas;
 
     public TarefaRepository() {
@@ -19,14 +18,11 @@ public class TarefaRepository {
     public Tarefa getTarefa(String id) {
         return this.tarefas.get(id);
     }
-    public TarefaGerencial getTarefaGerencial(String id) {
-        return this.tarefasGerenciais.get(id);
-    }
     public void cadastrarTarefa(Tarefa tarefa) {
         this.tarefas.put(tarefa.getId(), tarefa);
     } 
     public void cadastrarTarefaGerencial(TarefaGerencial tarefa) {
-        this.tarefasGerenciais.put(tarefa.getId(), tarefa);
+        this.tarefas.put(tarefa.getId(), tarefa);
     } 
     public void removerTarefa(String idTarefa){
         this.tarefas.remove(idTarefa);

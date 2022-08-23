@@ -36,6 +36,9 @@ public class TarefaService {
     }
     void concluirTarefa(String idTarefa){
         this.tr.getTarefa(idTarefa).concluir();
+        if (this.tr.getTarefa(idTarefa).getPresenteGerencial()) {
+        	
+        }
     }
     void removerTarefa(String idTarefa){
         this.tr.removerTarefa(idTarefa);
@@ -46,7 +49,7 @@ public class TarefaService {
         String output = "";
         output += tarefa.getNome() + " - " + tarefa.getId() + "\n";
         //output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
-        output +=  "- " + as.AtributosAtividade(tarefa.getIdAtividade())[0] + "\n";
+        output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
         String[] habilidades = tarefa.getHabilidades();
         for (String habilidade : habilidades) {
             output += habilidade;
@@ -86,17 +89,18 @@ public class TarefaService {
     	return tarefaGer.getId();  
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	TarefaGerencial tarefaGer = tr.getTarefaGerencial(idTarefaGerencial);
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
     	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	tarefa.presenteGerencial();
     	tarefaGer.addTarefa(tarefa);
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	TarefaGerencial tarefaGer = tr.getTarefaGerencial(idTarefaGerencial);
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
     	tarefaGer.excluirTarefa(tr.getTarefa(idTarefa));
     }
     
     public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
-    	TarefaGerencial tarefaGer = tr.getTarefaGerencial(idTarefaGerencial);
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
     	return this.tr.contaTarefasAssociadas(tarefaGer);
     }
     

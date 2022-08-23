@@ -1,53 +1,52 @@
 package sapo.tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.NoSuchElementException;
+
+import org.junit.jupiter.api.Test;
+
 public class PessoaTest extends BaseTest{
     @Test
 	void testCadastrarPessoa() {
-        this.
+        String[] habilidades = new String[] {"Mitadas", "Ironia"};
+        this.pessoaController.cadastrarPessoa("100.999.888-24", "Reizinho", habilidades);
+        assertEquals("Reizinho", this.pessoaController.getNome("100.999.888-24"));
     }
-	
-	@Test
-	void testEncerrarAtividade() {
-		this.atividadeController.cadastrarAtividade("Ver Tiktok", "Gastar toda da internet m�vel assistindo tiktok","124.123.754-12");
-		assertEquals("aberta", this.atividadeController.getStatus("VRT-2"));
-		this.atividadeController.encerrarAtividade("VRT-2");
-		assertEquals("encerrada", this.atividadeController.getStatus("VRT-2"));
-	}
-	
-	@Test
-	void testDesativarAtividade() {
-		this.atividadeController.cadastrarAtividade("Ver Anime", "Assistir muito naruto","124.123.754-12");
-		assertEquals("aberta", this.atividadeController.getStatus("VRN-2"));
-		this.atividadeController.desativarAtividade("VRN-2");
-		assertEquals("desativada", this.atividadeController.getStatus("VRN-2"));
-	}
-	
-	@Test
-	void testReabrirAtividade() {
-		this.atividadeController.cadastrarAtividade("Jogar Fortnite", "Ganhar muitas victory royales", "101.102.103-14");
-		assertEquals("aberta", this.atividadeController.getStatus("JGR-2"));
-		this.atividadeController.desativarAtividade("JGR-2");
-		this.atividadeController.reabrirAtividade("JGR-2");
-		assertEquals("aberta", this.atividadeController.getStatus("JGR-2"));
-	}
-	
-	@Test
-	void testExibirAtividade() {
-		this.atividadeController.cadastrarAtividade("Virar Maromba", "Treinar muito na academia", "101.102.103-14");
-		assertEquals("VRR-2: Virar Maromba\nResponsavel: Pikachu - 101.102.103-14\n===\nTreinar muito na academia\n===\n", this.atividadeController.exibirAtividade("VRR-2"));
-	}
-	
-	@Test
-	void testAlterarDescricaoAtividade() {
-		this.atividadeController.cadastrarAtividade("Maratonar Serie", "Assistir uma temporada na netflix", "124.123.754-12");
-		this.atividadeController.alterarDescricaoAtividade("MRT-2", "Maratonar uma temporada de Stranger Things");
-		assertEquals("MRT-2: Maratonar Serie\nResponsavel: Stias - 124.123.754-12\n===\nMaratonar uma temporada de Stranger Things\n===\n",this.atividadeController.exibirAtividade("MRT-2"));
-	}
-	@Test
-	void testAlterarResponsavelAtividade() {
-		this.atividadeController.cadastrarAtividade("Aproveitar as ferias", "Curtir muito os dias em que estarei de ferias", "124.123.754-12");
-		this.atividadeController.alterarResponsavelAtividade("PRV-2", "101.102.103-14");
-		assertEquals("PRV-2: Aproveitar as ferias\nResponsavel: Pikachu - 101.102.103-14\n===\nCurtir muito os dias em que estarei de ferias\n===\n",this.atividadeController.exibirAtividade("PRV-2"));
-	}
-    
+
+    @Test
+    void testExibirPessoa(){
+        assertEquals("Stias – 124.123.754-12\n"+
+                     "- Dizer seu nome\n"+
+                     "- Jogar cs:go", this.pessoaController.exibirPessoa("124.123.754-12"));
+    }
+
+    @Test
+    void testAlterarNomePessoa(){
+        this.pessoaController.alterarNomePessoa("124.123.754-12", "Nagazak1");
+        assertEquals("Nagazak1", this.pessoaController.getNome("124.123.754-12"));
+    }
+
+    @Test
+    void testAlterarHabilidadesPessoa(){
+        String[] habilidades = new String[] {"NENHUMA!"};
+        this.pessoaController.alterarHabilidadesPessoa("124.123.754-12", habilidades);
+        assertEquals("Stias – 124.123.754-12\n"+
+        "- NENHUMA!", this.pessoaController.exibirPessoa("124.123.754-12"));
+    }
+
+    @Test
+    void testRemoverPessoa(){
+        this.pessoaController.removerPessoa("124.123.754-12");
+        assertThrows(NoSuchElementException.class, ()->{this.pessoaController.exibirPessoa("124.123.754-12");});
+    }
+
+    @Test
+    void testAdicionarListarComentarioPessoa(){
+        this.pessoaController.adicionarComentarioPessoa("124.123.754-12", "Excelente mestre.", "101.102.103-14");
+        assertEquals("Stias - 124.123.754-12\n"+
+        "Comentários:\n"+
+        "- Excelente mestre. (Pikachu)", this.pessoaController.listarComentariosPessoa("124.123.754-12"));
+    }
 }

@@ -47,7 +47,13 @@ public class TarefaGerencial extends Tarefa {
 	}
 
 	public int contarTarefasAssociadas() {
-		return this.tarefasAssociadas.size();
+		int contador = 0;
+		for (Tarefa i: tarefasAssociadas) {
+			if (i.getClass() == this.getClass()) {
+				contador++;
+			}
+		}
+		return (this.tarefasAssociadas.size() - contador);
 	}
 
 	public boolean todasConcluidas() {

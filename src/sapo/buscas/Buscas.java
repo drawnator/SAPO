@@ -1,5 +1,5 @@
 package sapo.buscas;
 
-public class buscas {
+public class Buscas {
 
 }

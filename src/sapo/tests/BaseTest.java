@@ -36,7 +36,5 @@ class BaseTest {
         facade.cadastrarTarefa("JGH-0", "Jogue 500 horas de cs:go",HABILIDADES4_STRINGS);
         facade.cadastrarTarefa("JGH-0", "Jogue outras 500 horas de cs:go",HABILIDADES1_STRINGS);
         facade.cadastrarTarefa("GNH-1", "Destrua eles!",HABILIDADES2_STRINGS);
-
     }
-
 }

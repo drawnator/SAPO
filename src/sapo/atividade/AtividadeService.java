@@ -1,6 +1,7 @@
 package sapo.atividade;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import sapo.pessoa.PessoaService;
 import sapo.tarefa.Tarefa;
@@ -72,6 +73,10 @@ public class AtividadeService {
 		
 		return texto;
 
+	}
+	
+	public Set<Atividade> busca(String termo){
+		return ar.busca(termo);
 	}
 	
 	private String geraSigla(String nome) {

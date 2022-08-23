@@ -1,6 +1,7 @@
 package sapo.pessoa;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class PessoaService {
 	
@@ -65,5 +66,9 @@ public class PessoaService {
 	
 	public HashMap<String, Pessoa> getHashMap() {
 		return pr.getMap();
+	}
+	
+	public Set<Pessoa> busca(String termo){
+		return pr.busca(termo);
 	}
 }

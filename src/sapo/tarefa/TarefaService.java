@@ -1,5 +1,7 @@
 package sapo.tarefa;
 
+import java.util.Set;
+
 import sapo.atividade.AtividadeService;
 import sapo.pessoa.PessoaService;
 
@@ -68,6 +70,10 @@ public class TarefaService {
     void removerPessoaTarefa(String cpf, String idTarefa){
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
     }
+    
+    public Set<Tarefa> busca(String termo){
+		return tr.busca(termo);
+	}
     
     public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
     	

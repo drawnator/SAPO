@@ -1,6 +1,6 @@
 package sapo.atividade;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import sapo.pessoa.PessoaService;
@@ -19,7 +19,7 @@ public class AtividadeService {
 	public String getCodigo(String atividadeId) {return ar.getAtividade(atividadeId).getCodigo();}
 	public String getResponsavel(String atividadeId) {return ar.getAtividade(atividadeId).getcpfResponsavel();}
 	public String getStatus(String atividadeId) {return ar.getAtividade(atividadeId).getStatus();}
-	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
+	public HashMap<String,Tarefa> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		int numeroAtividade = ar.tamanhoListaAtividade();

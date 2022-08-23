@@ -57,7 +57,7 @@ public class AtividadeController {
 		as.removerResponsavel(atividadeId);
 	}
 	
-	public String representacao(PessoaService ps, TarefaService ts,String atividadeId) {
+	public String exibirAtividade(String atividadeId) {
 		return as.representacao(ps, ts, atividadeId);
 
 	}

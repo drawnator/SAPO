@@ -30,8 +30,8 @@ public class AtividadeRepository {
 	
 	public Set<Atividade> busca(String termo) {
 		return this.listaAtividades.values().stream()
-					.filter((x) -> Arrays.binarySearch(x.getNome().split(" "), termo) > 0
-							|| Arrays.binarySearch(x.getDescricao().split(" "), termo) > 0
+					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0
+							|| Arrays.binarySearch(x.getDescricao().toLowerCase().split(" "), termo.toLowerCase()) > 0
 							|| x.getCodigo().contains(termo))
 					.collect(Collectors.toSet());
 	}

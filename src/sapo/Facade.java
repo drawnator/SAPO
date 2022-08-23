@@ -9,9 +9,6 @@ public class Facade {
     private PessoaController pessoaController;
     private AtividadeController atividadeController;
     private TarefaController tarefaController;
-    private AtividadeRepository ar;
-    private PessoaRepository pr;
-    private TarefaRepository tr;
 
     public Facade() {
         var atividadeService = new AtividadeService();
@@ -26,14 +23,6 @@ public class Facade {
     
     public AtividadeController getAtividadeController() {
     	return this.atividadeController;
-    }
-    
-    public PessoaController getPessoaController() {
-    	return this.pessoaController;
-    }
-    
-    public TarefaController getTarefaController() {
-    	return this.tarefaController;
     }
 	
 	public void cadastrarPessoa(String cpf, String nome, String[] habilidades) {

@@ -29,20 +29,9 @@ public class Pessoa {
 	public String getNome() {
 		return this.nome;
 	}
-	public String getCpf() {
-		return this.cpf;
-	}
 	
 	public String[] getHabilidades() {
 		return this.habilidades;
-	}
-	
-	public String[] getHabilidadesLower() {
-		String[] habilidadesclone = new String[this.habilidades.length];
-		for(int i = 0; i < this.habilidades.length;i++) {
-			habilidadesclone[i] = this.habilidades[i].toLowerCase();
-		}
-		return habilidadesclone;
 	}
 	
 	public void setNome(String novoNome) {

@@ -25,8 +25,6 @@ class BaseTest {
     void setUp(){
         Facade facade = new Facade();
         this.atividadeController = facade.getAtividadeController();
-        this.pessoaController = facade.getPessoaController();
-        this.tarefaController = facade.getTarefaController();
         facade.cadastrarPessoa("124.123.754-12", "Stias", HABILIDADES1_STRINGS);
         facade.cadastrarPessoa("101.102.103-14", "Pikachu", HABILIDADES2_STRINGS);
 

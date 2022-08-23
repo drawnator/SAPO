@@ -1,7 +1,6 @@
 package sapo.atividade;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import sapo.pessoa.PessoaService;
 import sapo.tarefa.Tarefa;
@@ -24,7 +23,7 @@ public class AtividadeController {
 	public String getCodigo(String atividadeId) {return as.getCodigo(atividadeId);}
 	public String getResponsavel(String atividadeId) {return as.getResponsavel(atividadeId);}
 	public String getStatus(String atividadeId) {return as.getStatus(atividadeId);}
-	public HashMap<String,Tarefa> getTarefasCadastradas(String atividadeId) {return as.getTarefasCadastradas(atividadeId);}
+	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return as.getTarefasCadastradas(atividadeId);}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		return as.cadastrarAtividade(nome, descricao, cpf);
@@ -39,7 +38,7 @@ public class AtividadeController {
 	}
 
 	public void desativarAtividade(String atividadeId) {
-		as.desativarAtividade(atividadeId);
+		as.encerrarAtividade(atividadeId);
 	}
 
 	public void reabrirAtividade(String atividadeId) {

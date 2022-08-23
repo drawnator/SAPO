@@ -20,8 +20,8 @@ Lucas Emanuel Silva Melo - Tarefa, Funções
 
 ### Testes
 
-Guilherme Silva Toledo - Tarefa, Funções
+Guilherme Silva Toledo - Pessoa, Funções
 
-Erick Farias de Almeida Pereira - Atividade, Busca
+Erick Farias de Almeida Pereira - Tarefa, Busca
 
-Lucas Emanuel Silva Melo - Pessoa, Tarefas Gerenciais
+Lucas Emanuel Silva Melo - Atividade, Tarefas Gerenciais

@@ -1,11 +1,6 @@
 package sapo.pessoa;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-import sapo.atividade.Atividade;
 
 public class PessoaRepository {
 	
@@ -36,13 +31,5 @@ public class PessoaRepository {
 	
 	public void removePessoa(String cpf) {
 		pessoasCadastradas.remove(cpf);
-	}
-	
-	public Set<Pessoa> busca(String termo) {
-		return this.pessoasCadastradas.values().stream()
-					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0
-							|| Arrays.binarySearch(x.getHabilidadesLower(), termo.toLowerCase()) > 0
-							|| x.getCpf().contains(termo))
-					.collect(Collectors.toSet());
 	}
 }

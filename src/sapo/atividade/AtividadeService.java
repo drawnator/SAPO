@@ -1,7 +1,6 @@
 package sapo.atividade;
 
-import java.util.HashMap;
-import java.util.Set;
+import java.util.ArrayList;
 
 import sapo.pessoa.PessoaService;
 import sapo.tarefa.Tarefa;
@@ -19,7 +18,7 @@ public class AtividadeService {
 	public String getCodigo(String atividadeId) {return ar.getAtividade(atividadeId).getCodigo();}
 	public String getResponsavel(String atividadeId) {return ar.getAtividade(atividadeId).getcpfResponsavel();}
 	public String getStatus(String atividadeId) {return ar.getAtividade(atividadeId).getStatus();}
-	public HashMap<String,Tarefa> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
+	public ArrayList<String> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
 	
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		int numeroAtividade = ar.tamanhoListaAtividade();
@@ -62,7 +61,7 @@ public class AtividadeService {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
-		String descricao = ar.getAtividade(atividadeId).getDescricao();
+		String descricao = ar.getAtividade(cpfResponsa).getDescricao();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
 			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
@@ -73,14 +72,6 @@ public class AtividadeService {
 		
 		return texto;
 
-	}
-	
-	public Set<Atividade> busca(String termo){
-		return ar.busca(termo);
-	}
-	
-	public Set<Tarefa> busca(String IdAtividade, String termo){
-		return ar.busca(IdAtividade, termo);
 	}
 	
 	private String geraSigla(String nome) {

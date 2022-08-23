@@ -79,6 +79,10 @@ public class AtividadeService {
 		return ar.busca(termo);
 	}
 	
+	public Set<Tarefa> busca(String IdAtividade, String termo){
+		return ar.busca(IdAtividade, termo);
+	}
+	
 	private String geraSigla(String nome) {
 		String sigla = "";
 		String vogais = "aeiouAEIOU 123456789";

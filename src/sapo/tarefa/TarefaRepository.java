@@ -1,7 +1,10 @@
 package sapo.tarefa;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class TarefaRepository {
     private Map<String, Tarefa> tarefas;
@@ -27,4 +30,10 @@ public class TarefaRepository {
     public void incrementaTarefasCadastradas() {
         this.tarefasCadastradas++;
     }
+    
+    public Set<Tarefa> busca(String termo) {
+		return this.tarefas.values().stream()
+					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0)
+					.collect(Collectors.toSet());
+	}
 }

@@ -35,5 +35,21 @@ class AtividadeTests extends BaseTest {
 		this.atividadeController.reabrirAtividade("JGR-2");
 		assertEquals("aberta", this.atividadeController.getStatus("JGR-2"));
 	}
+	
+	@Test
+	void testExibirAtividade() {
+		this.atividadeController.cadastrarAtividade("Virar Maromba", "Treinar muito na academia", "101.102.103-14");
+		assertEquals("blabla", this.atividadeController.exibirAtividade("VRR-2"));
+	}
+	
+	@Test
+	void testAlterarDescricaoAtividade() {
+		this.atividadeController.alterarDescricaoAtividade("MRT-2", "Maratonar uma temporada de Stranger Things");
+		assertEquals("blabla",this.atividadeController.exibirAtividade("VRR-2"));
+	}
+	
+	void testAlterarResponsavelAtividade() {
+		
+	}
 
 }

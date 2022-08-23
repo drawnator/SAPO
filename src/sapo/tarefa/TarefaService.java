@@ -1,5 +1,6 @@
 package sapo.tarefa;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import sapo.atividade.AtividadeService;
@@ -36,8 +37,14 @@ public class TarefaService {
     }
     void concluirTarefa(String idTarefa){
         this.tr.getTarefa(idTarefa).concluir();
-        if (this.tr.getTarefa(idTarefa).getPresenteGerencial()) {
-        	
+        HashSet<String> gerenciaisParaChecagem = this.tr.getTarefa(idTarefa).getPresenteGerencial();
+        if (this.tr.getTarefa(idTarefa).getPresenteNaGerencial()) {
+        	for (String i: gerenciaisParaChecagem) {
+        		TarefaGerencial taGer = (TarefaGerencial) this.tr.getTarefa(i);
+        		if (taGer.todasConcluidas()) {
+        			taGer.concluir();
+        		}
+        	}
         }
     }
     void removerTarefa(String idTarefa){
@@ -91,12 +98,14 @@ public class TarefaService {
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
     	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
     	Tarefa tarefa = tr.getTarefa(idTarefa);
-    	tarefa.presenteGerencial();
+    	tarefa.addPresenteGerencial(idTarefaGerencial);
     	tarefaGer.addTarefa(tarefa);
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
     	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
-    	tarefaGer.excluirTarefa(tr.getTarefa(idTarefa));
+    	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	tarefaGer.excluirTarefa(tarefa);
+    	tarefa.excluirPresenteGerencial(idTarefaGerencial);
     }
     
     public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {

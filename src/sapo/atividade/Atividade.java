@@ -80,4 +80,27 @@ public class Atividade {
 		listaTarefas.put(tarefa.getId(),tarefa);
 		return tarefa.getId();
 	}
+	
+	public int nTarefasConcluidas() {
+		int total =0;
+		for(Tarefa tarefa:listaTarefas.values()) {
+			if (tarefa.getConcluida()) {
+				total++;
+			}
+		}
+		return total;
+	}
+	
+	public Tarefa[] tarefasPendentes() {
+		int total =0;
+		Tarefa[] pendente = new Tarefa[3];
+		for(Tarefa tarefa:listaTarefas.values()) {
+			if (!tarefa.getConcluida()) {
+				pendente[total] = tarefa;
+				total++;
+			}
+			if (total == 3) {return pendente;}
+		}
+		return pendente;
+	}
 }

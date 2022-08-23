@@ -9,9 +9,6 @@ public class Facade {
     private PessoaController pessoaController;
     private AtividadeController atividadeController;
     private TarefaController tarefaController;
-    private AtividadeRepository ar;
-    private PessoaRepository pr;
-    private TarefaRepository tr;
 
     public Facade() {
         var atividadeService = new AtividadeService();

@@ -1,6 +1,7 @@
 package sapo.tarefa;
 
-import java.util.NoSuchElementException;
+import java.util.HashSet;
+import java.util.Set;
 
 import sapo.atividade.AtividadeService;
 import sapo.pessoa.PessoaService;
@@ -16,10 +17,7 @@ public class TarefaService {
         return this.tr.getTarefa(idTarefa);
     }
     
-    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades, AtividadeService as){
-        if (as.getNome(atividadeId) == null){
-            throw new NoSuchElementException();
-        }
+    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         Tarefa tarefa = new Tarefa(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas());
         this.tr.cadastrarTarefa(tarefa);
         this.tr.incrementaTarefasCadastradas();
@@ -39,6 +37,15 @@ public class TarefaService {
     }
     void concluirTarefa(String idTarefa){
         this.tr.getTarefa(idTarefa).concluir();
+        HashSet<String> gerenciaisParaChecagem = this.tr.getTarefa(idTarefa).getPresenteGerencial();
+        if (this.tr.getTarefa(idTarefa).getPresenteNaGerencial()) {
+        	for (String i: gerenciaisParaChecagem) {
+        		TarefaGerencial taGer = (TarefaGerencial) this.tr.getTarefa(i);
+        		if (taGer.todasConcluidas()) {
+        			taGer.concluir();
+        		}
+        	}
+        }
     }
     void removerTarefa(String idTarefa){
         this.tr.removerTarefa(idTarefa);
@@ -48,6 +55,7 @@ public class TarefaService {
         Tarefa tarefa = this.tr.getTarefa(idTarefa);
         String output = "";
         output += tarefa.getNome() + " - " + tarefa.getId() + "\n";
+        //output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
         output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
         String[] habilidades = tarefa.getHabilidades();
         for (String habilidade : habilidades) {
@@ -73,15 +81,37 @@ public class TarefaService {
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
     }
     
-    /*public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
-    	
+    public Set<Tarefa> busca(String termo){
+		return tr.busca(termo);
+	}
+    
+    public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
+    	Tarefa[] tarefasAssociadas = new Tarefa[idTarefas.length];
+    	for (int i = 0; i < tarefasAssociadas.length; i++) {
+    		tarefasAssociadas[i] = this.tr.getTarefa(idTarefas[i]);
+    	}
+    	TarefaGerencial tarefaGer = new TarefaGerencial(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas(), tarefasAssociadas);
+    	this.tr.cadastrarTarefaGerencial(tarefaGer);
+    	this.tr.incrementaTarefasCadastradas();
+    	return tarefaGer.getId();  
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
+    	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	tarefa.addPresenteGerencial(idTarefaGerencial);
+    	tarefaGer.addTarefa(tarefa);
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	
-    }*/
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
+    	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	tarefaGer.excluirTarefa(tarefa);
+    	tarefa.excluirPresenteGerencial(idTarefaGerencial);
+    }
+    
+    public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
+    	TarefaGerencial tarefaGer = (TarefaGerencial) tr.getTarefa(idTarefaGerencial);
+    	return this.tr.contaTarefasAssociadas(tarefaGer);
+    }
     
     
 }

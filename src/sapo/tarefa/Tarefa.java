@@ -11,7 +11,7 @@ public class Tarefa {
     private String[] habilidades;
     private HashSet<String> pessoas;
     private boolean concluida;
-    private boolean presenteGerencial;
+    private HashSet<String> presenteGerencial;
     
     public Tarefa(String id, String nome, String[] habilidades, int tarefasCadastradas) {
         this.idAtividade = id;
@@ -20,7 +20,7 @@ public class Tarefa {
         this.habilidades = habilidades;
         this.duracao = 0;
         this.concluida = false;
-        this.presenteGerencial = false;
+        this.presenteGerencial = new HashSet<String>();
     }
 
     public String getId() {
@@ -81,12 +81,20 @@ public class Tarefa {
     	return this.concluida;
     }
     
-    public boolean presenteGerencial() {
-    	this.presenteGerencial = !this.presenteGerencial;
-    	return this.presenteGerencial;
+    public void addPresenteGerencial(String idTarefaGerencial) {
+    	presenteGerencial.add(idTarefaGerencial);
     }
     
-    public boolean getPresenteGerencial() {
+    public void excluirPresenteGerencial(String idTarefaGerencial) {
+    	presenteGerencial.remove(idTarefaGerencial);
+    }
+    
+    public boolean getPresenteNaGerencial() {
+    	if (presenteGerencial.size() == 0) {
+    		return false;
+    	} return true;
+    }
+    public HashSet<String> getPresenteGerencial() {
     	return this.presenteGerencial;
     }
 }

@@ -43,6 +43,10 @@ public class TarefaGerencial extends Tarefa {
 		tarefasAssociadas.add(tarefa);
 	}
 	
+	public void excluirTarefa(Tarefa tarefa) {
+		tarefasAssociadas.remove(tarefa);
+	}
+	
 	public int contarTarefasAssociadas() {
 		return this.tarefasAssociadas.size();
 	}

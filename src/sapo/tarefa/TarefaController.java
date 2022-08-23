@@ -1,5 +1,7 @@
 package sapo.tarefa;
 
+import java.util.NoSuchElementException;
+
 import sapo.atividade.AtividadeService;
 import sapo.pessoa.PessoaService;
 
@@ -14,6 +16,9 @@ public class TarefaController {
         this.as = as;
     }
     public String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
+        if (this.as.getCodigo(atividadeId) == null){
+            throw new NoSuchElementException();
+        }
         return this.ts.cadastrarTarefa(atividadeId, nome, habilidades);
     } 
     public void alterarNomeTarefa(String idTarefa, String novoNome){
@@ -43,7 +48,7 @@ public class TarefaController {
     public void removerPessoaTarefa(String cpf, String idTarefa){
         this.ts.removerPessoaTarefa(cpf, idTarefa);
     }
-    public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
+    /*public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
     	
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
@@ -51,5 +56,5 @@ public class TarefaController {
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
     	
-    }
+    }*/
 }

@@ -1,7 +1,5 @@
 package sapo.tarefa;
 
-import java.util.NoSuchElementException;
-
 import sapo.atividade.AtividadeService;
 import sapo.pessoa.PessoaService;
 
@@ -16,10 +14,7 @@ public class TarefaService {
         return this.tr.getTarefa(idTarefa);
     }
     
-    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades, AtividadeService as){
-        if (as.getNome(atividadeId) == null){
-            throw new NoSuchElementException();
-        }
+    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         Tarefa tarefa = new Tarefa(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas());
         this.tr.cadastrarTarefa(tarefa);
         this.tr.incrementaTarefasCadastradas();
@@ -48,7 +43,8 @@ public class TarefaService {
         Tarefa tarefa = this.tr.getTarefa(idTarefa);
         String output = "";
         output += tarefa.getNome() + " - " + tarefa.getId() + "\n";
-        output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
+        //output +=  "- " + as.getNome(tarefa.getIdAtividade()) + "\n";
+        output +=  "- " + as.AtributosAtividade(tarefa.getIdAtividade())[0] + "\n";
         String[] habilidades = tarefa.getHabilidades();
         for (String habilidade : habilidades) {
             output += habilidade;
@@ -73,7 +69,7 @@ public class TarefaService {
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
     }
     
-    /*public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
+    public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
     	
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
@@ -81,7 +77,7 @@ public class TarefaService {
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
     	
-    }*/
+    }
     
     
 }

@@ -13,6 +13,7 @@ public class Busca {
 	PessoaService ps;
 	TarefaService ts;
 	ArrayList<String[]> historicoBusca;
+	ArrayList<String> historicoValores;
 
 	public Busca(AtividadeService as, PessoaService ps, TarefaService ts) {
 		this.as = as;
@@ -24,6 +25,7 @@ public class Busca {
 	public String[] exibirPessoas(String consulta) {
 		String[] resultado = (String[]) ps.busca(consulta).toArray();
 		String[] tipo = {"PESSOA"};
+		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);
 		return resultado;
 	}
@@ -31,6 +33,7 @@ public class Busca {
 	public String[] buscarAtividade(String consulta) {
 		String[] resultado = (String[]) as.busca(consulta).toArray();
 		String[] tipo = {"ATIVIDADE"};
+		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);
 		return resultado;
 	}
@@ -38,6 +41,7 @@ public class Busca {
 	public String[] buscarTarefas(String nome) {
 		String[] resultado = (String[]) ts.busca(nome).toArray();
 		String[] tipo = {"TAREFA"};
+		historicoValores.add(nome);
 		addHistorico(tipo,resultado);
 		return resultado;
 	}
@@ -45,6 +49,7 @@ public class Busca {
 	public String[] buscarTarefas(String idAtividade, String nome) {
 		String[] resultado = (String[]) as.busca(idAtividade,nome).toArray();
 		String[] tipo = {"TAREFA"};
+		historicoValores.add(nome);
 		addHistorico(tipo,resultado);
 		return resultado;
 	}
@@ -54,11 +59,15 @@ public class Busca {
 	}
 
 	public String[] buscasMaisRecentes(int nBuscas) {
-		return null;
+		String[] recentes = new String[nBuscas];
+		for(int i = 0; i < nBuscas;i++) {
+			recentes[i] = historicoValores.get(nBuscas-i);
+		}
+		return recentes;
 	}
 
 	public String[] exibirHistoricoBusca(int indexBusca) {
-		return null;
+		return historicoBusca.get(indexBusca);
 	}
 	
 	private void addHistorico(String[] tipo, String[] resultado) {

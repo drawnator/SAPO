@@ -46,7 +46,7 @@ public class PessoaTest extends BaseTest{
     void testAdicionarListarComentarioPessoa(){
         this.pessoaController.adicionarComentarioPessoa("124.123.754-12", "Excelente mestre.", "101.102.103-14");
         assertEquals("Stias - 124.123.754-12\n"+
-        "Comentários:\n"+
+        "Comentarios:\n"+
         "- Excelente mestre. (Pikachu)", this.pessoaController.listarComentariosPessoa("124.123.754-12"));
     }
 }

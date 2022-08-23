@@ -16,4 +16,8 @@ public class Comentario {
 		return this.cpfAutor;
 	}
 	
+	public String toString() {
+		return this.comentario;
+	}
+	
 }

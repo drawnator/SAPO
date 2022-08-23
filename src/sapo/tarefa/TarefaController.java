@@ -46,7 +46,7 @@ public class TarefaController {
     public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
     	return this.ts.cadastrarTarefaGerencial(atividadeId, nome, habilidades, idTarefas);
     }
-    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
+    public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) throws IllegalArgumentException {
     	this.ts.adicionarNaTarefaGerencial(idTarefaGerencial, idTarefa);
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {

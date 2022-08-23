@@ -86,14 +86,17 @@ public class TarefaService {
     	return tarefaGer.getId();  
     }
     public void adicionarNaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	tarefaGer = tr.getTarefa(idTarefaGerencial);
+    	TarefaGerencial tarefaGer = tr.getTarefa(idTarefaGerencial);
+    	Tarefa tarefa = tr.getTarefa(idTarefa);
+    	//FALTA IMPLEMENTAÇÃO
     }
     public void removerDaTarefaGerencial(String idTarefaGerencial, String idTarefa) {
-    	
+    	//FALTA IMPLEMENTAÇÃO
     }
     
     public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
-    	
+    	TarefaGerencial tarefaGer = tr.getTarefa(idTarefaGerencial);
+    	return this.tr.contaTarefasAssociadas(tarefaGer);
     }
     
     

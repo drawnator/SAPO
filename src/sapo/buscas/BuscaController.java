@@ -1,6 +1,20 @@
 package sapo.buscas;
 
+import sapo.atividade.AtividadeService;
+import sapo.pessoa.PessoaService;
+import sapo.tarefa.TarefaService;
+
 public class BuscaController {
+	AtividadeService as;
+	PessoaService ps;
+	TarefaService ts;
+
+	public BuscaController(AtividadeService as,PessoaService ps, TarefaService ts) {
+		this.as = as;
+		this.ps = ps;
+		this.ts = ts;
+		
+	}
 
 	public String[] exibirPessoas(String consulta) {return null;}
 

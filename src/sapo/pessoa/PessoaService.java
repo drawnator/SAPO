@@ -1,5 +1,6 @@
 package sapo.pessoa;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -132,6 +133,7 @@ public class PessoaService {
 			lista[ocupados] = pessoa.toString();
 			ocupados++;
 		}
+		Arrays.sort(lista);
 		return lista;
 	}
 }

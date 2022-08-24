@@ -19,7 +19,8 @@ public class Busca {
 		this.as = as;
 		this.ps = ps;
 		this.ts = ts;
-
+		this.historicoBusca = new ArrayList<String[]>();
+		this.historicoValores = new ArrayList<String>();
 	}
 
 	public String[] exibirPessoas(String consulta) {
@@ -31,7 +32,7 @@ public class Busca {
 	}
 
 	public String[] buscarAtividade(String consulta) {
-		String[] resultado = (String[]) as.busca(consulta).toArray();
+		String[] resultado = Arrays.stream(as.busca(consulta).toArray()).toArray(String[]::new);
 		String[] tipo = {"ATIVIDADE"};
 		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);
@@ -39,7 +40,7 @@ public class Busca {
 	}
 
 	public String[] buscarTarefas(String nome) {
-		String[] resultado = (String[]) ts.busca(nome).toArray();
+		String[] resultado = Arrays.stream(ts.busca(nome).toArray()).toArray(String[]::new);
 		String[] tipo = {"TAREFA"};
 		historicoValores.add(nome);
 		addHistorico(tipo,resultado);
@@ -47,7 +48,7 @@ public class Busca {
 	}
 
 	public String[] buscarTarefas(String idAtividade, String nome) {
-		String[] resultado = (String[]) as.busca(idAtividade,nome).toArray();
+		String[] resultado = Arrays.stream(as.busca(idAtividade,nome).toArray()).toArray(String[]::new);
 		String[] tipo = {"TAREFA"};
 		historicoValores.add(nome);
 		addHistorico(tipo,resultado);

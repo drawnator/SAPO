@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import sapo.atividade.AtividadeService;
+import sapo.pessoa.Pessoa;
 import sapo.pessoa.PessoaService;
 import sapo.tarefa.TarefaController;
 import sapo.tarefa.TarefaService;
@@ -42,5 +43,21 @@ class TarefaTests {
 		tc.alterarNomeTarefa("STD-0-0", "Vender dindin");
 		assertEquals("blabla", tc.exibirTarefa("STD-0-0"));
 	}
+	
+	@Test
+	void testMudarHoras() {
+		ts.cadastrarTarefa("JGH-1", "testar github",null);
+		ts.getTarefa("JGH-0-1").mudarHoras(10);
+		assertEquals(10, ts.getTarefa("JGH-0-1").getDuracao());
+		ts.getTarefa("JGH-0-1").mudarHoras(10);
+		assertEquals(20, ts.getTarefa("JGH-0-1").getDuracao());
+		ts.getTarefa("JGH-0-2").mudarHoras(10);
+		assertEquals(10, ts.getTarefa("JGH-0-2").getDuracao());
+	}
 
+	@Test
+	void testAssociarPessoa(){
+		ts.getTarefa("JGH-0-1").associarPessoa("124.123.754-12");
+		assertEquals(((Pessoa) ts.getTarefa("JGH-0-1").getPessoas().toArray()[0]).getNome(),"124.123.754-12");
+	}
 }

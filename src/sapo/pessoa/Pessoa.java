@@ -6,15 +6,16 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import sapo.tarefa.Tarefa;
 import sapo.tarefa.TarefaService;
 
 public class Pessoa {
 	
 	private String cpf;
 	private String nome;
-	private String[] habilidades;
+	protected String[] habilidades;
 	private List<Comentario> comentarios;
-	private Set<String> tarefasAssociadas;
+	protected Set<String> tarefasAssociadas;
 	private int nivel;
 	
 	public Pessoa(String cpf, String nome, String[] habilidades) {
@@ -52,7 +53,15 @@ public class Pessoa {
 		int tarefasFinalizadas = 0;
 		for(String idTarefa: this.tarefasAssociadas){
 			Tarefa tarefa = ts.getTarefa(idTarefa);
+			if (tarefa.getConcluida()){
+				tarefasFinalizadas++;
+			}
+			else{
+				tarefasAndamento++;
+			}
+			this.tarefasAssociadas.remove(idTarefa);
 		}
+		return tarefasAndamento/2 + tarefasFinalizadas;
 	}
 	
 	public String[] getHabilidadesLower() {

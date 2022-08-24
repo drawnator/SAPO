@@ -51,7 +51,7 @@ public class PessoaController {
 		return ps.getPessoa(cpf);
 	}
 
-	public void cadastrarAluno(String cpf, String matr, int periodo, String[] habilidades){
+	public void cadastrarAluno(String cpf, String nome, String matr, int periodo, String[] habilidades){
 		//this.ps.cadastrarAluno(cpf, matr, periodo, habilidades);
 	}
 

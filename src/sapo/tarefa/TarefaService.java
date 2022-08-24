@@ -23,19 +23,19 @@ public class TarefaService {
         this.tr.incrementaTarefasCadastradas();
         return tarefa.getId();  
     } 
-    void alterarNomeTarefa(String idTarefa, String novoNome){
+    public void alterarNomeTarefa(String idTarefa, String novoNome){
         this.tr.getTarefa(idTarefa).setNome(novoNome);
     }
-    void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
+    public void alterarHabilidadesTarefa(String idTarefa, String[] habilidades){
         this.tr.getTarefa(idTarefa).setHabilidades(habilidades);
     }
-    void adicionarHorasTarefa(String idTarefa, int horas){
+    public void adicionarHorasTarefa(String idTarefa, int horas){
         this.tr.getTarefa(idTarefa).mudarHoras(horas);
     }
-    void removerHorasTarefa(String idTarefa, int horas){
+    public void removerHorasTarefa(String idTarefa, int horas){
         this.tr.getTarefa(idTarefa).mudarHoras(-horas);
     }
-    void concluirTarefa(String idTarefa){
+    public void concluirTarefa(String idTarefa){
         this.tr.getTarefa(idTarefa).concluir();
         HashSet<String> gerenciaisParaChecagem = this.tr.getTarefa(idTarefa).getPresenteGerencial();
         if (this.tr.getTarefa(idTarefa).getPresenteNaGerencial()) {
@@ -47,10 +47,10 @@ public class TarefaService {
         	}
         }
     }
-    void removerTarefa(String idTarefa){
+    public void removerTarefa(String idTarefa){
         this.tr.removerTarefa(idTarefa);
     }
-    String exibirTarefa(String idTarefa, PessoaService ps, AtividadeService as){
+    public String exibirTarefa(String idTarefa, PessoaService ps, AtividadeService as){
         
         Tarefa tarefa = this.tr.getTarefa(idTarefa);
         String output = "";
@@ -74,11 +74,11 @@ public class TarefaService {
         return output;
         
     }
-    void associarPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
+    public void associarPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
         this.tr.getTarefa(idTarefa).associarPessoa(cpf);
         ps.associarPessoaTarefa(cpf, idTarefa);
     }
-    void removerPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
+    public void removerPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
         ps.removerPessoaTarefa(cpf, idTarefa);
     }

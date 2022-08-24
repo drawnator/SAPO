@@ -74,7 +74,7 @@ public class PessoaController {
 		return this.ps.pegarNivel(cpf, this.ts);
 	}
 
-	/*public String[] listarPessoas(){
-
-	}*/
+	public String[] listarPessoas(){
+		return this.ps.listarPessoas();
+	}
 }

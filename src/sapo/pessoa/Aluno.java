@@ -1,5 +1,7 @@
 package sapo.pessoa;
 
+import java.util.Arrays;
+
 import sapo.tarefa.Tarefa;
 import sapo.tarefa.TarefaService;
 
@@ -57,6 +59,17 @@ public class Aluno extends Pessoa{
         double doubleTarFinHab = tarefasFinalizadasHab;
 		super.nivel += tarefasAndamento/2 + tarefasFinalizadas + (int) Math.ceil(doubleTarFinHab*1.5);  
         return super.nivel;
+    }
+
+    @Override
+    public String toString(){
+        Arrays.sort(habilidades);
+		String exibicao = nome + " – " + cpf;
+        exibicao += "Aluno - " + this.matricula + " - " + this.periodo;
+		for (int i = 0; i < habilidades.length; i++) {
+			exibicao += "\n- " + habilidades[i];
+		}
+		return exibicao;
     }
     
 }

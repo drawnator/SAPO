@@ -16,7 +16,7 @@ public class Pessoa {
 	protected String[] habilidades;
 	private List<Comentario> comentarios;
 	protected Set<String> tarefasAssociadas;
-	private int nivel;
+	protected int nivel;
 	
 	public Pessoa(String cpf, String nome, String[] habilidades) {
 		this.cpf = cpf;
@@ -25,6 +25,15 @@ public class Pessoa {
 		this.tarefasAssociadas = new HashSet<>();
 		this.comentarios = new ArrayList<Comentario>();
 		this.nivel = 0;
+	}
+
+	public Pessoa(String cpf, String nome, String[] habilidades, int nivel) {
+		this.cpf = cpf;
+		this.nome = nome;
+		this.habilidades = habilidades;
+		this.tarefasAssociadas = new HashSet<>();
+		this.comentarios = new ArrayList<Comentario>();
+		this.nivel = nivel;
 	}
 	
 	@Override
@@ -61,7 +70,8 @@ public class Pessoa {
 			}
 			this.tarefasAssociadas.remove(idTarefa);
 		}
-		return tarefasAndamento/2 + tarefasFinalizadas;
+		this.nivel += tarefasAndamento/2 + tarefasFinalizadas;
+		return this.nivel;
 	}
 	
 	public String[] getHabilidadesLower() {

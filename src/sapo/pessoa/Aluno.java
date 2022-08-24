@@ -13,6 +13,12 @@ public class Aluno extends Pessoa{
         this.periodo = periodo;
     }
 
+    public Aluno(String cpf, String nome, String matr, int periodo, String[] habilidades, int nivel){
+        super(cpf, nome, habilidades, nivel);
+        this.matricula = matr;
+        this.periodo = periodo;
+    }
+
     public String getMatricula(){
         return this.matricula;
     }
@@ -49,7 +55,8 @@ public class Aluno extends Pessoa{
             super.tarefasAssociadas.remove(idTarefa);
 		}
         double doubleTarFinHab = tarefasFinalizadasHab;
-		return tarefasAndamento/2 + tarefasFinalizadas + (int) Math.ceil(doubleTarFinHab*1.5);  
+		super.nivel += tarefasAndamento/2 + tarefasFinalizadas + (int) Math.ceil(doubleTarFinHab*1.5);  
+        return super.nivel;
     }
     
 }

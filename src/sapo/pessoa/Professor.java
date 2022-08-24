@@ -13,6 +13,12 @@ public class Professor extends Pessoa{
         this.disciplinas = disciplinas;
     }
 
+    public Professor(String cpf, String nome, String siape, String[] disciplinas, String[] habilidades, int nivel){
+        super(cpf, nome, habilidades, nivel);
+        this.siape = siape;
+        this.disciplinas = disciplinas;
+    }
+
     public String getSiape(){
         return siape;
     }
@@ -52,7 +58,8 @@ public class Professor extends Pessoa{
 			}
             super.tarefasAssociadas.remove(idTarefa);
 		}
-		return tarefasAndamento/4 + tarefasFinalizadas;
+		super.nivel += tarefasAndamento/4 + tarefasFinalizadas;
+        return super.nivel;
     }
     
 }

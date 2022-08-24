@@ -2,7 +2,6 @@ package sapo.pessoa;
 
 import java.util.NoSuchElementException;
 
-import sapo.tarefa.Tarefa;
 import sapo.tarefa.TarefaService;
 
 public class PessoaController {
@@ -52,22 +51,23 @@ public class PessoaController {
 	}
 
 	public void cadastrarAluno(String cpf, String nome, String matr, int periodo, String[] habilidades){
-		//this.ps.cadastrarAluno(cpf, matr, periodo, habilidades);
+		this.ps.cadastrarAluno(cpf, nome, matr, periodo, habilidades);
 	}
 
 	public void cadastrarProfessor(String cpf, String nome, String siape, String[] disciplinas, String[] habilidades){
+		this.ps.cadastrarProfessor(cpf, nome, siape, disciplinas, habilidades);
 	}
 
 	public void definirFuncaoAluno(String cpf, String matr, int periodo){
-		
+		this.ps.definirFuncaoAluno(cpf, matr, periodo, this.ts);
 	}
 
 	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas){
-
+		this.ps.definirFuncaoProfessor(cpf, siape, disciplinas, this.ts);
 	}
 
 	public void removerFuncao(String cpf){
-
+		this.ps.removerFuncao(cpf, this.ts);
 	}
 
 	public int pegarNivel(String cpf){

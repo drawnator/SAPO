@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import sapo.atividade.Atividade;
 import sapo.tarefa.TarefaService;
 
 public class PessoaRepository {
@@ -50,6 +49,31 @@ public class PessoaRepository {
 	public int pegarNivel(String cpf, TarefaService ts){
 		return this.pessoasCadastradas.get(cpf).getNivel(ts);
 	}
+
+	public void cadastrarAluno(String cpf, Aluno aluno){
+		this.pessoasCadastradas.put(cpf, aluno);
+	}
+
+	public void cadastrarProfessor(String cpf, Professor professor){
+		this.pessoasCadastradas.put(cpf, professor);
+	}
+
+	public void definirFuncaoAluno(String cpf, String matr, int periodo){
+		
+	}
+
+	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas){
+
+	}
+
+	public void removerFuncao(String cpf){
+
+	}
+
+
+	/*public String[] listarPessoas(){
+
+	}*/
 	
 	public Set<Pessoa> busca(String termo) {
 		return this.pessoasCadastradas.values().stream()

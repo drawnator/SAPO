@@ -87,10 +87,6 @@ public class PessoaService {
 		return pr.busca(termo);
 	}
 
-	public int pegarNivel(String cpf, TarefaService ts){
-		return this.pr.pegarNivel(cpf, ts);
-	}
-	
 	public String exibirComentarios(String cpf) {
 		String exibicao = pr.getNome(cpf) + " - " + cpf + "\nComentarios:\n";
 		List<Comentario> listaComent = pr.getPessoa(cpf).getComentarios();
@@ -99,4 +95,37 @@ public class PessoaService {
 		}
 		return exibicao;
 	}
+
+	public void cadastrarAluno(String cpf, String nome, String matr, int periodo, String[] habilidades){
+		Aluno aluno = new Aluno(cpf, nome, matr, periodo, habilidades);
+		this.pr.cadastrarAluno(cpf, aluno);
+	}
+
+	public void cadastrarProfessor(String cpf, String nome, String siape, String[] disciplinas, String[] habilidades){
+		Professor professor = new Professor(cpf, nome, siape, disciplinas, habilidades);
+		this.pr.cadastrarProfessor(cpf, professor);
+	}
+
+	public void definirFuncaoAluno(String cpf, String matr, int periodo, TarefaService ts){
+		Aluno aluno = new Aluno(cpf, this.pr.getNome(cpf), matr, periodo, this.pr.getHabilidades(cpf), this.pr.pegarNivel(cpf, ts));
+		this.pr.cadastrarAluno(cpf, aluno);
+	}
+
+	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas, TarefaService ts){
+		Professor professor = new Professor(cpf, this.pr.getNome(cpf), siape, disciplinas, this.pr.getHabilidades(cpf), this.pr.pegarNivel(cpf, ts));
+		this.pr.cadastrarProfessor(cpf, professor);
+	}
+
+	public void removerFuncao(String cpf, TarefaService ts){
+		Pessoa pessoa = new Pessoa(cpf, this.pr.getNome(cpf), this.pr.getHabilidades(cpf), this.pr.pegarNivel(cpf, ts));
+		this.pr.cadastraPessoa(cpf, pessoa);
+	}
+
+	public int pegarNivel(String cpf, TarefaService ts){
+		return this.pr.pegarNivel(cpf, ts);
+	}
+
+	/*public String[] listarPessoas(){
+
+	}*/
 }

@@ -72,7 +72,6 @@ public class Busca {
 	}
 	
 	private void addHistorico(String[] tipo, String[] resultado) {
-		historicoBusca.add((String[]) Stream.concat(
-				Arrays.stream(tipo), Arrays.stream(resultado)).toArray());
+		historicoBusca.add( Arrays.stream(Stream.concat(Arrays.stream(tipo), Arrays.stream(resultado)).toArray()).toArray(String[]::new));
 	}
 }

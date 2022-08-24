@@ -60,8 +60,8 @@ public class PessoaRepository {
 	
 	public Set<Pessoa> busca(String termo) {
 		return this.pessoasCadastradas.values().stream()
-					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0
-							|| Arrays.binarySearch(x.getHabilidadesLower(), termo.toLowerCase()) > 0
+					.filter((x) -> Arrays.binarySearch(x.getNome().split(" "), termo) > 0
+							|| Arrays.binarySearch(x.getHabilidades(), termo) > 0
 							|| x.getCpf().contains(termo))
 					.collect(Collectors.toSet());
 	}

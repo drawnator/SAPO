@@ -9,8 +9,9 @@ class BuscaTest extends BaseTest {
 	@Test
 	void testExibirPessoas() {
 		String[] habilidade = {"canta muito"};
-		this.pessoaController.cadastrarPessoa("111.111.111-111", "Pedrinho", habilidade);
-		assertEquals("blabla", this.busca.exibirPessoas("111.111.111-111"));
+		
+		this.pessoaController.cadastrarPessoa("111.111.111-111", "Pedrinho doido", habilidade);
+		assertEquals(this.pessoaController.getPessoa("111.111.111-111").getNome(), this.busca.exibirPessoas("doido")[0]);
 	}
 	
 	@Test

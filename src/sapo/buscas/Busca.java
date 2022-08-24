@@ -2,10 +2,14 @@ package sapo.buscas;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Set;
 import java.util.stream.Stream;
 
+import sapo.atividade.Atividade;
 import sapo.atividade.AtividadeService;
+import sapo.pessoa.Pessoa;
 import sapo.pessoa.PessoaService;
+import sapo.tarefa.Tarefa;
 import sapo.tarefa.TarefaService;
 
 public class Busca {
@@ -24,7 +28,12 @@ public class Busca {
 	}
 
 	public String[] exibirPessoas(String consulta) {
-		String[] resultado = Arrays.stream(ps.busca(consulta).toArray()).toArray(String[]::new);
+		Set<Pessoa> encontro = ps.busca(consulta);
+		String[] resultado = new String[encontro.size()];
+		int iterator = 0;
+		for(Pessoa pessoa:encontro) {
+			resultado[iterator] = pessoa.getNome();
+		}
 		String[] tipo = {"PESSOA"};
 		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);
@@ -32,7 +41,12 @@ public class Busca {
 	}
 
 	public String[] buscarAtividade(String consulta) {
-		String[] resultado = Arrays.stream(as.busca(consulta).toArray()).toArray(String[]::new);
+		Set<Atividade> encontro = as.busca(consulta);
+		String[] resultado = new String[encontro.size()];
+		int iterator = 0;
+		for(Atividade Atividade:encontro) {
+			resultado[iterator] = Atividade.getNome();
+		}
 		String[] tipo = {"ATIVIDADE"};
 		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);
@@ -40,7 +54,12 @@ public class Busca {
 	}
 
 	public String[] buscarTarefas(String nome) {
-		String[] resultado = Arrays.stream(ts.busca(nome).toArray()).toArray(String[]::new);
+		Set<Tarefa> encontro = ts.busca(nome);
+		String[] resultado = new String[encontro.size()];
+		int iterator = 0;
+		for(Tarefa Tarefa:encontro) {
+			resultado[iterator] = Tarefa.getNome();
+		}
 		String[] tipo = {"TAREFA"};
 		historicoValores.add(nome);
 		addHistorico(tipo,resultado);
@@ -48,7 +67,12 @@ public class Busca {
 	}
 
 	public String[] buscarTarefas(String idAtividade, String nome) {
-		String[] resultado = Arrays.stream(as.busca(idAtividade,nome).toArray()).toArray(String[]::new);
+		Set<Tarefa> encontro = as.busca(idAtividade,nome);
+		String[] resultado = new String[encontro.size()];
+		int iterator = 0;
+		for(Tarefa Tarefa:encontro) {
+			resultado[iterator] = Tarefa.getNome();
+		}
 		String[] tipo = {"TAREFA"};
 		historicoValores.add(nome);
 		addHistorico(tipo,resultado);

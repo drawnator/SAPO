@@ -23,7 +23,7 @@ public class Busca {
 	}
 
 	public String[] exibirPessoas(String consulta) {
-		String[] resultado = (String[]) ps.busca(consulta).toArray();
+		String[] resultado = Arrays.stream(ps.busca(consulta).toArray()).toArray(String[]::new);
 		String[] tipo = {"PESSOA"};
 		historicoValores.add(consulta);
 		addHistorico(tipo,resultado);

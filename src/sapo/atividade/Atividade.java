@@ -10,7 +10,7 @@ public class Atividade {
 	private String descricao;
 	private String cpfResponsavel;
 	private String status;
-	private HashMap<String,Tarefa> listaTarefas;
+	private HashMap<String, Tarefa> listaTarefas;
 
 	public Atividade(String nome, String descricao, String cpfResponsavel, String sigla) {
 		this.nome = nome;
@@ -18,13 +18,28 @@ public class Atividade {
 		this.cpfResponsavel = cpfResponsavel;
 		this.codigo = sigla;
 		this.status = "aberta";
-		this.listaTarefas = new HashMap<String,Tarefa>();
+		this.listaTarefas = new HashMap<String, Tarefa>();
 	}
-	public String getNome() {return this.nome;}
-	public String getDescricao() {return this.descricao;}
-	public String getCodigo() {return this.codigo;}
-	public String getcpfResponsavel() {return this.cpfResponsavel;}
-	public HashMap<String, Tarefa> gettarefascadastradas() {return this.listaTarefas;}
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public String getDescricao() {
+		return this.descricao;
+	}
+
+	public String getCodigo() {
+		return this.codigo;
+	}
+
+	public String getcpfResponsavel() {
+		return this.cpfResponsavel;
+	}
+
+	public HashMap<String, Tarefa> gettarefascadastradas() {
+		return this.listaTarefas;
+	}
 
 	public void encerrar() throws IllegalStateException {
 		if (this.status == "aberta") {
@@ -70,35 +85,37 @@ public class Atividade {
 	public void removerResponsavel() {
 		this.cpfResponsavel = null;
 	}
-	
+
 	public String getStatus() {
 		return this.status;
 	}
 
 	public String addTarefa(Tarefa tarefa) {
-		listaTarefas.put(tarefa.getId(),tarefa);
+		listaTarefas.put(tarefa.getId(), tarefa);
 		return tarefa.getId();
 	}
-	
+
 	public int nTarefasConcluidas() {
-		int total =0;
-		for(Tarefa tarefa:listaTarefas.values()) {
+		int total = 0;
+		for (Tarefa tarefa : listaTarefas.values()) {
 			if (tarefa.getConcluida()) {
 				total++;
 			}
 		}
 		return total;
 	}
-	
+
 	public Tarefa[] tarefasPendentes() {
-		int total =0;
+		int total = 0;
 		Tarefa[] pendente = new Tarefa[3];
-		for(Tarefa tarefa:listaTarefas.values()) {
+		for (Tarefa tarefa : listaTarefas.values()) {
 			if (!tarefa.getConcluida()) {
 				pendente[total] = tarefa;
 				total++;
 			}
-			if (total == 3) {return pendente;}
+			if (total == 3) {
+				return pendente;
+			}
 		}
 		return pendente;
 	}

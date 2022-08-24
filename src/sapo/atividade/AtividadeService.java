@@ -14,13 +14,30 @@ public class AtividadeService {
 		this.ar = new AtividadeRepository();
 	}
 
-	public String getNome(String atividadeId) {return ar.getAtividade(atividadeId).getNome();}
-	public String getDescricao(String atividadeId) {return ar.getAtividade(atividadeId).getDescricao();}
-	public String getCodigo(String atividadeId) {return ar.getAtividade(atividadeId).getCodigo();}
-	public String getResponsavel(String atividadeId) {return ar.getAtividade(atividadeId).getcpfResponsavel();}
-	public String getStatus(String atividadeId) {return ar.getAtividade(atividadeId).getStatus();}
-	public HashMap<String,Tarefa> getTarefasCadastradas(String atividadeId) {return ar.getAtividade(atividadeId).gettarefascadastradas();}
-	
+	public String getNome(String atividadeId) {
+		return ar.getAtividade(atividadeId).getNome();
+	}
+
+	public String getDescricao(String atividadeId) {
+		return ar.getAtividade(atividadeId).getDescricao();
+	}
+
+	public String getCodigo(String atividadeId) {
+		return ar.getAtividade(atividadeId).getCodigo();
+	}
+
+	public String getResponsavel(String atividadeId) {
+		return ar.getAtividade(atividadeId).getcpfResponsavel();
+	}
+
+	public String getStatus(String atividadeId) {
+		return ar.getAtividade(atividadeId).getStatus();
+	}
+
+	public HashMap<String, Tarefa> getTarefasCadastradas(String atividadeId) {
+		return ar.getAtividade(atividadeId).gettarefascadastradas();
+	}
+
 	public String cadastrarAtividade(String nome, String descricao, String cpf) {
 		int numeroAtividade = ar.tamanhoListaAtividade();
 		String id = geraSigla(nome) + "-" + numeroAtividade;
@@ -28,7 +45,7 @@ public class AtividadeService {
 		ar.cadastrarAtividade(id, novaAtividade);
 		return id;
 	}
-	
+
 	public int addTarefa(String atividadeId, Tarefa tarefa) {
 		ar.getAtividade(atividadeId).addTarefa(tarefa);
 		return ar.getAtividade(atividadeId).gettarefascadastradas().size();
@@ -57,8 +74,9 @@ public class AtividadeService {
 	public void removerResponsavel(String atividadeId) {
 		ar.getAtividade(atividadeId).alterarResponsavel(null);
 	}
-	
-	public String representacao(PessoaService ps, TarefaService ts,String atividadeId)throws IllegalArgumentException {
+
+	public String representacao(PessoaService ps, TarefaService ts, String atividadeId)
+			throws IllegalArgumentException {
 		String nomeAtividade = ar.getAtividade(atividadeId).getNome();
 		String codigoAtividade = ar.getAtividade(atividadeId).getCodigo();
 		String cpfResponsa = ar.getAtividade(atividadeId).getcpfResponsavel();
@@ -67,27 +85,29 @@ public class AtividadeService {
 		int nTarefasConcluidas = ar.getAtividade(atividadeId).nTarefasConcluidas();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
-			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
+			texto += "Responsavel: " + ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
 		}
 		texto += "===\n";
 		texto += descricao + "\n";
 		texto += "===\n";
 		texto += "Tarefas: " + nTarefasConcluidas + "/" + nTarefasTotal + "\n";
-		for (Tarefa tarefa:ar.getAtividade(atividadeId).tarefasPendentes()) {
-			if (tarefa != null) {texto += "- " + tarefa.getNome() + " - " + tarefa.getId();}
+		for (Tarefa tarefa : ar.getAtividade(atividadeId).tarefasPendentes()) {
+			if (tarefa != null) {
+				texto += "- " + tarefa.getNome() + " - " + tarefa.getId();
+			}
 		}
 		return texto;
 
 	}
-	
-	public Set<Atividade> busca(String termo){
+
+	public Set<Atividade> busca(String termo) {
 		return ar.busca(termo);
 	}
-	
-	public Set<Tarefa> busca(String IdAtividade, String termo){
+
+	public Set<Tarefa> busca(String IdAtividade, String termo) {
 		return ar.busca(IdAtividade, termo);
 	}
-	
+
 	private String geraSigla(String nome) {
 		String sigla = "";
 		String vogais = "aeiouAEIOU 123456789";

@@ -7,7 +7,7 @@ public class TarefaGerencial extends Tarefa {
 	private HashSet<Tarefa> tarefasAssociadas;
 	private HashSet<String> habilidadesUniao;
 	private String[] habilidadesTarefas;
-	private HashSet<String> gerenciaisAssociadas; //2
+	private HashSet<String> gerenciaisAssociadas; // 2
 
 	public TarefaGerencial(String atividadeId, String nome, String[] habilidadesNovas, int tarefasCadastradas,
 			Tarefa[] tarefasRelacionadas) {
@@ -41,7 +41,7 @@ public class TarefaGerencial extends Tarefa {
 
 	public int contarTarefasAssociadas() {
 		int contador = 0;
-		for (Tarefa i: tarefasAssociadas) {
+		for (Tarefa i : tarefasAssociadas) {
 			if (i.getClass() == this.getClass()) {
 				contador++;
 			}
@@ -57,22 +57,25 @@ public class TarefaGerencial extends Tarefa {
 		}
 		return true;
 	}
-	
+
 	public boolean checaSeGerencial(Tarefa tarefa) {
 		if (tarefa.getClass() == this.getClass()) {
 			this.gerenciaisAssociadas.add(tarefa.getId());
-			for (String i: ((TarefaGerencial) tarefa).getGerenciaisAssociadas()) {
+			for (String i : ((TarefaGerencial) tarefa).getGerenciaisAssociadas()) {
 				this.gerenciaisAssociadas.add(i);
 			}
 			return true;
-		} return false;
+		}
+		return false;
 	}
-	
+
 	public boolean checarCiclo(String idTarefa) {
 		if (this.gerenciaisAssociadas.contains(idTarefa)) {
 			return true;
-		} return false;
+		}
+		return false;
 	}
+
 	public HashSet<String> getGerenciaisAssociadas() {
 		return this.gerenciaisAssociadas;
 	}

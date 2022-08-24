@@ -31,12 +31,12 @@ public class Busca {
 		Set<Pessoa> encontro = ps.busca(consulta);
 		String[] resultado = new String[encontro.size()];
 		int iterator = 0;
-		for(Pessoa pessoa:encontro) {
+		for (Pessoa pessoa : encontro) {
 			resultado[iterator] = pessoa.getNome();
 		}
-		String[] tipo = {"PESSOA"};
+		String[] tipo = { "PESSOA" };
 		historicoValores.add(consulta);
-		addHistorico(tipo,resultado);
+		addHistorico(tipo, resultado);
 		return resultado;
 	}
 
@@ -44,12 +44,12 @@ public class Busca {
 		Set<Atividade> encontro = as.busca(consulta);
 		String[] resultado = new String[encontro.size()];
 		int iterator = 0;
-		for(Atividade Atividade:encontro) {
+		for (Atividade Atividade : encontro) {
 			resultado[iterator] = Atividade.getNome();
 		}
-		String[] tipo = {"ATIVIDADE"};
+		String[] tipo = { "ATIVIDADE" };
 		historicoValores.add(consulta);
-		addHistorico(tipo,resultado);
+		addHistorico(tipo, resultado);
 		return resultado;
 	}
 
@@ -57,25 +57,25 @@ public class Busca {
 		Set<Tarefa> encontro = ts.busca(nome);
 		String[] resultado = new String[encontro.size()];
 		int iterator = 0;
-		for(Tarefa Tarefa:encontro) {
+		for (Tarefa Tarefa : encontro) {
 			resultado[iterator] = Tarefa.getNome();
 		}
-		String[] tipo = {"TAREFA"};
+		String[] tipo = { "TAREFA" };
 		historicoValores.add(nome);
-		addHistorico(tipo,resultado);
+		addHistorico(tipo, resultado);
 		return resultado;
 	}
 
 	public String[] buscarTarefas(String idAtividade, String nome) {
-		Set<Tarefa> encontro = as.busca(idAtividade,nome);
+		Set<Tarefa> encontro = as.busca(idAtividade, nome);
 		String[] resultado = new String[encontro.size()];
 		int iterator = 0;
-		for(Tarefa Tarefa:encontro) {
+		for (Tarefa Tarefa : encontro) {
 			resultado[iterator] = Tarefa.getNome();
 		}
-		String[] tipo = {"TAREFA"};
+		String[] tipo = { "TAREFA" };
 		historicoValores.add(nome);
-		addHistorico(tipo,resultado);
+		addHistorico(tipo, resultado);
 		return resultado;
 	}
 
@@ -85,8 +85,8 @@ public class Busca {
 
 	public String[] buscasMaisRecentes(int nBuscas) {
 		String[] recentes = new String[nBuscas];
-		for(int i = 0; i < nBuscas;i++) {
-			recentes[i] = historicoValores.get(nBuscas-i);
+		for (int i = 0; i < nBuscas; i++) {
+			recentes[i] = historicoValores.get(nBuscas - i);
 		}
 		return recentes;
 	}
@@ -94,8 +94,9 @@ public class Busca {
 	public String[] exibirHistoricoBusca(int indexBusca) {
 		return historicoBusca.get(indexBusca);
 	}
-	
+
 	private void addHistorico(String[] tipo, String[] resultado) {
-		historicoBusca.add( Arrays.stream(Stream.concat(Arrays.stream(tipo), Arrays.stream(resultado)).toArray()).toArray(String[]::new));
+		historicoBusca.add(Arrays.stream(Stream.concat(Arrays.stream(tipo), Arrays.stream(resultado)).toArray())
+				.toArray(String[]::new));
 	}
 }

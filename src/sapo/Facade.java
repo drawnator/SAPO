@@ -1,5 +1,9 @@
 package sapo;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.stream.Stream;
+
 import sapo.atividade.*;
 import sapo.buscas.Busca;
 import sapo.pessoa.*;
@@ -175,4 +179,33 @@ public class Facade {
     public int contarTodasTarefasNaTarefaGerencial(String idTarefaGerencial) {
     	return this.tarefaController.contarTodasTarefasNaTarefaGerencial(idTarefaGerencial);
     }
+    
+    public String[] exibirPessoas(String consulta) {
+		return this.busca.exibirPessoas(consulta);
+	}
+
+	public String[] buscarAtividade(String consulta) {
+		return this.busca.buscarAtividade(consulta);
+	}
+
+	public String[] buscarTarefas(String nome) {
+		return this.busca.buscarTarefas(nome);
+	}
+
+	public String[] buscarTarefas(String idAtividade, String nome) {
+		return this.busca.buscarTarefas(idAtividade, nome);
+	}
+
+	public String[] sugerirTarefas(String idAtividade, String cpf) {
+		return this.busca.sugerirTarefas(idAtividade, cpf);
+	}
+
+	public String[] buscasMaisRecentes(int nBuscas) {
+		return this.busca.buscasMaisRecentes(nBuscas);
+	}
+
+	public String[] exibirHistoricoBusca(int indexBusca) {
+		return this.busca.exibirHistoricoBusca(indexBusca);
+	}
+	
 }

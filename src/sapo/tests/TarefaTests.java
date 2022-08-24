@@ -48,11 +48,11 @@ class TarefaTests {
 	void testMudarHoras() {
 		ts.cadastrarTarefa("JGH-0", "testar github",null);
 		ts.getTarefa("JGH-0-0").mudarHoras(10);
-		assertEquals(10, ts.getTarefa("JGH-0-1").getDuracao());
+		assertEquals(10, ts.getTarefa("JGH-0-0").getDuracao());
 		ts.getTarefa("JGH-0-0").mudarHoras(10);
-		assertEquals(20, ts.getTarefa("JGH-0-1").getDuracao());
+		assertEquals(20, ts.getTarefa("JGH-0-0").getDuracao());
 		ts.getTarefa("JGH-0-1").mudarHoras(10);
-		assertEquals(10, ts.getTarefa("JGH-0-2").getDuracao());
+		assertEquals(10, ts.getTarefa("JGH-0-1").getDuracao());
 	}
 
 	@Test

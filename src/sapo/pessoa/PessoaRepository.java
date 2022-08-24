@@ -6,6 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import sapo.atividade.Atividade;
+import sapo.tarefa.TarefaService;
 
 public class PessoaRepository {
 	
@@ -36,6 +37,18 @@ public class PessoaRepository {
 	
 	public void removePessoa(String cpf) {
 		pessoasCadastradas.remove(cpf);
+	}
+
+	public void associarPessoaTarefa(String cpf, String id){
+		this.pessoasCadastradas.get(cpf).associarTarefa(id);
+	}
+
+	public void removerPessoaTarefa(String cpf, String id){
+		this.pessoasCadastradas.get(cpf).removerTarefa(id);
+	}
+
+	public int pegarNivel(String cpf, TarefaService ts){
+		return this.pessoasCadastradas.get(cpf).getNivel(ts);
 	}
 	
 	public Set<Pessoa> busca(String termo) {

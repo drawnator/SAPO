@@ -38,10 +38,10 @@ public class TarefaController {
         return this.ts.exibirTarefa(idTarefa, this.ps, this.as);
     }
     public void associarPessoaTarefa(String cpf, String idTarefa){
-        this.ts.associarPessoaTarefa(cpf, idTarefa);
+        this.ts.associarPessoaTarefa(cpf, idTarefa, this.ps);
     }
     public void removerPessoaTarefa(String cpf, String idTarefa){
-        this.ts.removerPessoaTarefa(cpf, idTarefa);
+        this.ts.removerPessoaTarefa(cpf, idTarefa, this.ps);
     }
     public String cadastrarTarefaGerencial(String atividadeId , String nome, String[] habilidades,String[] idTarefas) {
     	return this.ts.cadastrarTarefaGerencial(atividadeId, nome, habilidades, idTarefas);

@@ -13,11 +13,11 @@ public class TarefaService {
         this.tr = new TarefaRepository();
     }
 
-    Tarefa getTarefa(String idTarefa){
+    public Tarefa getTarefa(String idTarefa){
         return this.tr.getTarefa(idTarefa);
     }
     
-    String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
+    public String cadastrarTarefa(String atividadeId , String nome, String[] habilidades){
         Tarefa tarefa = new Tarefa(atividadeId, nome, habilidades, this.tr.getTarefasCadastradas());
         this.tr.cadastrarTarefa(tarefa);
         this.tr.incrementaTarefasCadastradas();
@@ -74,11 +74,13 @@ public class TarefaService {
         return output;
         
     }
-    void associarPessoaTarefa(String cpf, String idTarefa){
+    void associarPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
         this.tr.getTarefa(idTarefa).associarPessoa(cpf);
+        ps.associarPessoaTarefa(cpf, idTarefa);
     }
-    void removerPessoaTarefa(String cpf, String idTarefa){
+    void removerPessoaTarefa(String cpf, String idTarefa, PessoaService ps){
         this.tr.getTarefa(idTarefa).removerPessoa(cpf);
+        ps.removerPessoaTarefa(cpf, idTarefa);
     }
     
     public Set<Tarefa> busca(String termo){

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import sapo.tarefa.TarefaService;
+
 public class PessoaService {
 	
 	private PessoaRepository pr;
@@ -41,6 +43,14 @@ public class PessoaService {
 	public void alterarHabilidadesPessoa(String cpf, String[] novasHabilidades) {
 		pr.getPessoa(cpf).setHabilidades(novasHabilidades);
 	}
+
+	public void associarPessoaTarefa(String cpf, String id){
+		this.pr.associarPessoaTarefa(cpf, id);
+	}
+
+	public void removerPessoaTarefa(String cpf, String id){
+		this.pr.removerPessoaTarefa(cpf, id);
+	}
 	
 	public void removerPessoa(String cpf) {
 		pr.getPessoa(cpf).setNome("");
@@ -75,6 +85,10 @@ public class PessoaService {
 	
 	public Set<Pessoa> busca(String termo){
 		return pr.busca(termo);
+	}
+
+	public int pegarNivel(String cpf, TarefaService ts){
+		return this.pr.pegarNivel(cpf, ts);
 	}
 	
 	public String exibirComentarios(String cpf) {

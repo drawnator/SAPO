@@ -47,6 +47,7 @@ class TarefaTests {
 	@Test
 	void testMudarHoras() {
 		ts.cadastrarTarefa("JGH-0", "testar github",null);
+		ts.cadastrarTarefa("JGH-0", "testar github denovo",null);
 		ts.getTarefa("JGH-0-0").mudarHoras(10);
 		assertEquals(10, ts.getTarefa("JGH-0-0").getDuracao());
 		ts.getTarefa("JGH-0-0").mudarHoras(10);

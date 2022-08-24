@@ -32,6 +32,7 @@ class TarefaTests {
 	void testCadastraTarefa() {
 		String[] habilidades = {"java","ver tiktok"};
 		assertEquals("STD-0-0", tc.cadastrarTarefa("STD-0", "Estudar", habilidades));
+		assertEquals("STD-0-1", tc.cadastrarTarefa("STD-0", "Ler", habilidades));
 	}
 	
 	@Test

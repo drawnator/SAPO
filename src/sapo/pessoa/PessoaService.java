@@ -125,7 +125,13 @@ public class PessoaService {
 		return this.pr.pegarNivel(cpf, ts);
 	}
 
-	/*public String[] listarPessoas(){
-
-	}*/
+	public String[] listarPessoas(){
+		String[] lista = new String[this.pr.getMap().size()];
+		int ocupados = 0;
+		for (Pessoa pessoa: this.pr.getMap().values()){
+			lista[ocupados] = pessoa.toString();
+			ocupados++;
+		}
+		return lista;
+	}
 }

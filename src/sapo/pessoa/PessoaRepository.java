@@ -57,23 +57,6 @@ public class PessoaRepository {
 	public void cadastrarProfessor(String cpf, Professor professor){
 		this.pessoasCadastradas.put(cpf, professor);
 	}
-
-	public void definirFuncaoAluno(String cpf, String matr, int periodo){
-		
-	}
-
-	public void definirFuncaoProfessor(String cpf, String siape, String[] disciplinas){
-
-	}
-
-	public void removerFuncao(String cpf){
-
-	}
-
-
-	/*public String[] listarPessoas(){
-
-	}*/
 	
 	public Set<Pessoa> busca(String termo) {
 		return this.pessoasCadastradas.values().stream()

@@ -11,8 +11,8 @@ import sapo.tarefa.TarefaService;
 
 public class Pessoa {
 	
-	private String cpf;
-	private String nome;
+	protected String cpf;
+	protected String nome;
 	protected String[] habilidades;
 	private List<Comentario> comentarios;
 	protected Set<String> tarefasAssociadas;

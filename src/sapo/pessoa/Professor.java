@@ -1,5 +1,8 @@
 package sapo.pessoa;
 
+import sapo.tarefa.Tarefa;
+import sapo.tarefa.TarefaService;
+
 public class Professor extends Pessoa{
     private String siape;
     private String[] disciplinas;
@@ -16,10 +19,40 @@ public class Professor extends Pessoa{
     public String[] getDisciplinas(){
         return this.disciplinas;
     }
-    public int calculaNivel(){
-        int nivelCalculado = 0;
+
+    @Override
+    public int getNivel(TarefaService ts){
         int tarefasAndamento = 0;
-        int 
+		int tarefasFinalizadas = 0;
+		for(String idTarefa: super.tarefasAssociadas){
+			Tarefa tarefa = ts.getTarefa(idTarefa);
+			if (tarefa.getConcluida()){
+                boolean existeOverlap = false;
+				String[] habsTarefa = tarefa.getHabilidades();
+                for (String habilidade: habsTarefa){
+                    for (String habProfessor: super.habilidades){
+                        if (habilidade.equals(habProfessor)){
+                            existeOverlap = true;
+                        }
+                    }
+
+                    for (String disciplina: this.disciplinas){
+                        if (habilidade.equals(disciplina)){
+                            existeOverlap = true;
+                        }
+                    }
+                }
+
+                if (existeOverlap){
+                    tarefasFinalizadas++;
+                }
+			}
+			else{
+				tarefasAndamento++;
+			}
+            super.tarefasAssociadas.remove(idTarefa);
+		}
+		return tarefasAndamento/4 + tarefasFinalizadas;
     }
     
 }

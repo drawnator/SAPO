@@ -4,26 +4,17 @@ import java.util.HashSet;
 
 public class TarefaGerencial extends Tarefa {
 
-	// private String id;
-	// private String idAtividade;
-	// private String nome;
 	private HashSet<Tarefa> tarefasAssociadas;
-	// private int horas;
 	private HashSet<String> habilidadesUniao;
 	private String[] habilidadesTarefas;
 	private HashSet<String> gerenciaisAssociadas; //2
-	// private HashSet<String> pessoas;
-	// private boolean concluida;
 
 	public TarefaGerencial(String atividadeId, String nome, String[] habilidadesNovas, int tarefasCadastradas,
 			Tarefa[] tarefasRelacionadas) {
-		// this.idAtividade = atividadeId;
-		// this.nome = nome;
 		super(atividadeId, nome, habilidadesNovas, tarefasCadastradas);
 		for (int i = 0; i < tarefasRelacionadas.length; i++) {
 			this.tarefasAssociadas.add(tarefasRelacionadas[i]);
 		}
-		// this.horas = 0;
 		for (int i = 0; i < habilidadesNovas.length; i++) {
 			habilidadesTarefas = tarefasRelacionadas[i].getHabilidades();
 			for (int y = 0; y < habilidadesNovas.length; y++) {

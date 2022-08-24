@@ -36,7 +36,7 @@ public class TarefaRepository {
     
     public Set<Tarefa> busca(String termo) {
 		return this.tarefas.values().stream()
-					.filter((x) -> Arrays.binarySearch(x.getNome().toLowerCase().split(" "), termo.toLowerCase()) > 0)
+					.filter((x) -> Arrays.binarySearch(x.getNome().split(" "), termo) > 0)
 					.collect(Collectors.toSet());
 	}
     public int contaTarefasAssociadas(TarefaGerencial tarefaGer) {

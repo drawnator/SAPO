@@ -65,7 +65,6 @@ public class AtividadeService {
 		String descricao = ar.getAtividade(atividadeId).getDescricao();
 		int nTarefasTotal = ar.getAtividade(atividadeId).gettarefascadastradas().size();
 		int nTarefasConcluidas = ar.getAtividade(atividadeId).nTarefasConcluidas();
-		Tarefa[] tarefaspendentes = ar.getAtividade(atividadeId).tarefasPendentes();
 		String texto = codigoAtividade + ": " + nomeAtividade + "\n";
 		if (cpfResponsa != null) {
 			texto += "Responsavel: "+ ps.getNome(cpfResponsa) + " - " + cpfResponsa + "\n";
